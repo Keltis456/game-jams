@@ -13,34 +13,35 @@ public static class GameComponentsLookup {
     public const int Destroyed = 2;
     public const int EmptyTile = 3;
     public const int GameObject = 4;
-    public const int Id = 5;
-    public const int MainCamera = 6;
-    public const int Player = 7;
-    public const int Position = 8;
-    public const int Rotation = 9;
-    public const int Scale = 10;
-    public const int Target = 11;
-    public const int Text = 12;
-    public const int TextColor = 13;
-    public const int TextMeshProText = 14;
-    public const int Tile = 15;
-    public const int TileHealth = 16;
-    public const int TileHealthLink = 17;
-    public const int TileIconLink = 18;
-    public const int TileLink = 19;
-    public const int TileMaxHealth = 20;
-    public const int TileName = 21;
-    public const int TileNameLink = 22;
-    public const int Touchable = 23;
-    public const int Touch = 24;
-    public const int Touched = 25;
-    public const int UnityAnimator = 26;
-    public const int UnityAnimatorBool = 27;
-    public const int UnityAnimatorFloat = 28;
-    public const int UnityAnimatorInt = 29;
-    public const int UnityAnimatorRequested = 30;
+    public const int GridPosition = 5;
+    public const int Id = 6;
+    public const int MainCamera = 7;
+    public const int Player = 8;
+    public const int Position = 9;
+    public const int Rotation = 10;
+    public const int Scale = 11;
+    public const int Target = 12;
+    public const int Text = 13;
+    public const int TextColor = 14;
+    public const int TextMeshProText = 15;
+    public const int Tile = 16;
+    public const int TileHealth = 17;
+    public const int TileHealthLink = 18;
+    public const int TileIconLink = 19;
+    public const int TileLink = 20;
+    public const int TileMaxHealth = 21;
+    public const int TileName = 22;
+    public const int TileNameLink = 23;
+    public const int Touchable = 24;
+    public const int Touch = 25;
+    public const int Touched = 26;
+    public const int UnityAnimator = 27;
+    public const int UnityAnimatorBool = 28;
+    public const int UnityAnimatorFloat = 29;
+    public const int UnityAnimatorInt = 30;
+    public const int UnityAnimatorRequested = 31;
 
-    public const int TotalComponents = 31;
+    public const int TotalComponents = 32;
 
     public static readonly string[] componentNames = {
         "Activeness",
@@ -48,6 +49,7 @@ public static class GameComponentsLookup {
         "Destroyed",
         "EmptyTile",
         "GameObject",
+        "GridPosition",
         "Id",
         "MainCamera",
         "Player",
@@ -82,6 +84,7 @@ public static class GameComponentsLookup {
         typeof(Destroyed),
         typeof(EmptyTile),
         typeof(GameObjectComponent),
+        typeof(GridPosition),
         typeof(Id),
         typeof(MainCamera),
         typeof(Player),

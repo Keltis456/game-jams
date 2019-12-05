@@ -6,24 +6,12 @@ namespace DeadBreach.ECS.Systems
 {
     public sealed class MapFeature : Feature
     {
-        public MapFeature(GameContext game, GameObject mapTilePrefab)
+        public MapFeature(GameContext game, Canvas canvas, GameObject mapTilePrefab)
         {
             Add(new InitializeMapWithNewTiles(game));
 
-            Add(new CreateMapTileFromPrefab(game, mapTilePrefab));
-            Add(new RenderCubicPositionToTransform(game));
-            Add(new ApplyTileNameToTileNameText(game));
-            Add(new ApplyTileHealthToTileHealthText(game));
-            Add(new ChangeTextActivenessIfEmpty(game));
-            
-
-            Add(new SetTouchedNeighborTileAsTarget(game));
-            Add(new MoveTilesBehindPlayer(game));
-            Add(new MovePlayerToTarget(game));
-            Add(new DestroyTarget(game));
-            Add(new DestroyTargetName(game));
-            Add(new DestroyTargetHealth(game));
-            Add(new DestroyTargetIcon(game));
+            Add(new CreateMapTileFromPrefab(game, canvas, mapTilePrefab));
+            Add(new RenderGridPositionToTransform(game));
         }
     }
 }
