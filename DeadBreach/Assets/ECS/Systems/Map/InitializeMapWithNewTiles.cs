@@ -5,8 +5,8 @@ namespace DeadBreach.ECS.Systems.Map
 {
     public class InitializeMapWithNewTiles : IInitializeSystem
     {
-        private const int SizeX = 10;
-        private const int SizeY = 10;
+        private const int SizeX = 9;
+        private const int SizeY = 9;
 
         private readonly GameContext game;
 

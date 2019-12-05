@@ -28,10 +28,8 @@ public class Destroyed : IComponent { }
 public class Tile : IComponent { }
 public class Target : IComponent { }
 public class TileName : IComponent { public string value; }
-public class CubicPosition : IComponent { public Vector3Int value; }
+
 public class GridPosition : IComponent { public Vector3Int value; }
-public class TileHealth : IComponent { public int value; }
-public class TileMaxHealth : IComponent { public int value; }
 
 public class Player : IComponent { }
 public class EmptyTile : IComponent { }

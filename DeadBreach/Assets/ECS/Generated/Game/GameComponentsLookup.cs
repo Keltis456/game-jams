@@ -80,7 +80,6 @@ public static class GameComponentsLookup {
 
     public static readonly System.Type[] componentTypes = {
         typeof(Activeness),
-        typeof(CubicPosition),
         typeof(Destroyed),
         typeof(EmptyTile),
         typeof(GameObjectComponent),
@@ -96,11 +95,9 @@ public static class GameComponentsLookup {
         typeof(TextColor),
         typeof(TextMeshProText),
         typeof(Tile),
-        typeof(TileHealth),
         typeof(TileHealthLink),
         typeof(TileIconLink),
         typeof(TileLink),
-        typeof(TileMaxHealth),
         typeof(TileName),
         typeof(TileNameLink),
         typeof(Touchable),

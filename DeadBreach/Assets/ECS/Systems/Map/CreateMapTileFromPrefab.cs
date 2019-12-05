@@ -1,5 +1,4 @@
-﻿using DeadBreach.ECS.Behaviours;
-using Entitas;
+﻿using Entitas;
 using UnityEngine;
 
 namespace DeadBreach.ECS.Systems.Map
