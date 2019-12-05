@@ -11,14 +11,14 @@ public partial class GameEntity {
     public GridPosition gridPosition { get { return (GridPosition)GetComponent(GameComponentsLookup.GridPosition); } }
     public bool hasGridPosition { get { return HasComponent(GameComponentsLookup.GridPosition); } }
 
-    public void AddGridPosition(UnityEngine.Vector3Int newValue) {
+    public void AddGridPosition(UnityEngine.Vector2Int newValue) {
         var index = GameComponentsLookup.GridPosition;
         var component = (GridPosition)CreateComponent(index, typeof(GridPosition));
         component.value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceGridPosition(UnityEngine.Vector3Int newValue) {
+    public void ReplaceGridPosition(UnityEngine.Vector2Int newValue) {
         var index = GameComponentsLookup.GridPosition;
         var component = (GridPosition)CreateComponent(index, typeof(GridPosition));
         component.value = newValue;

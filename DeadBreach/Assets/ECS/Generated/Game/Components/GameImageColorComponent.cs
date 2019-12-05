@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public Activeness activeness { get { return (Activeness)GetComponent(GameComponentsLookup.Activeness); } }
-    public bool hasActiveness { get { return HasComponent(GameComponentsLookup.Activeness); } }
+    public ImageColor imageColor { get { return (ImageColor)GetComponent(GameComponentsLookup.ImageColor); } }
+    public bool hasImageColor { get { return HasComponent(GameComponentsLookup.ImageColor); } }
 
-    public void AddActiveness(bool newValue) {
-        var index = GameComponentsLookup.Activeness;
-        var component = (Activeness)CreateComponent(index, typeof(Activeness));
+    public void AddImageColor(UnityEngine.Color newValue) {
+        var index = GameComponentsLookup.ImageColor;
+        var component = (ImageColor)CreateComponent(index, typeof(ImageColor));
         component.value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceActiveness(bool newValue) {
-        var index = GameComponentsLookup.Activeness;
-        var component = (Activeness)CreateComponent(index, typeof(Activeness));
+    public void ReplaceImageColor(UnityEngine.Color newValue) {
+        var index = GameComponentsLookup.ImageColor;
+        var component = (ImageColor)CreateComponent(index, typeof(ImageColor));
         component.value = newValue;
         ReplaceComponent(index, component);
     }
 
-    public void RemoveActiveness() {
-        RemoveComponent(GameComponentsLookup.Activeness);
+    public void RemoveImageColor() {
+        RemoveComponent(GameComponentsLookup.ImageColor);
     }
 }
 
@@ -40,17 +40,17 @@ public partial class GameEntity {
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherActiveness;
+    static Entitas.IMatcher<GameEntity> _matcherImageColor;
 
-    public static Entitas.IMatcher<GameEntity> Activeness {
+    public static Entitas.IMatcher<GameEntity> ImageColor {
         get {
-            if (_matcherActiveness == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.Activeness);
+            if (_matcherImageColor == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.ImageColor);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherActiveness = matcher;
+                _matcherImageColor = matcher;
             }
 
-            return _matcherActiveness;
+            return _matcherImageColor;
         }
     }
 }

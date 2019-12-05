@@ -11,7 +11,8 @@ namespace DeadBreach.ECS.Systems
             Add(new InitializeMapWithNewTiles(game));
 
             Add(new CreateMapTileFromPrefab(game, canvas, mapTilePrefab));
-            Add(new RenderGridPositionToTransform(game));
+            Add(new RenderGridPositionToPosition(game));
+            Add(new DebugTouchedImagesByColor(game));
         }
     }
 }

@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace DeadBreach.ECS.Systems.Map
 {
-    public class RenderGridPositionToTransform : IExecuteSystem
+    public class RenderGridPositionToPosition : IExecuteSystem
     {
         private readonly IGroup<GameEntity> entities;
 
-        public RenderGridPositionToTransform(GameContext game)
+        public RenderGridPositionToPosition(GameContext game)
         {
             entities = game.GetGroup(GameMatcher
                 .AllOf(

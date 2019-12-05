@@ -1,4 +1,5 @@
-﻿using DeadBreach.ECS.Systems.Render;
+﻿using System;
+using DeadBreach.ECS.Systems.Render;
 
 namespace DeadBreach.ECS.Systems
 {
@@ -9,7 +10,8 @@ namespace DeadBreach.ECS.Systems
 			Add(new RenderRotation(game));
 			Add(new RenderPosition(game));
 			Add(new RenderScale(game));
-			Add(new RenderActiveness(game));
-		}
+
+			Add(new RenderImageColor(game));
+        }
 	}
 }

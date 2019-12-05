@@ -1,5 +1,6 @@
 ﻿using Entitas;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace DeadBreach.ECS.Systems.Map
 {
@@ -32,6 +33,10 @@ namespace DeadBreach.ECS.Systems.Map
                 entity.AddScale(mapTilePrefab.transform.localScale);
                 
                 entity.isTouchable = true;
+
+                var image = entity.gameObject.value.GetComponent<Image>();
+                if (image) 
+                    entity.AddImage(image);
             }
         }
     }

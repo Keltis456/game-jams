@@ -8,14 +8,14 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int Activeness = 0;
-    public const int CubicPosition = 1;
-    public const int Destroyed = 2;
-    public const int EmptyTile = 3;
-    public const int GameObject = 4;
-    public const int GridPosition = 5;
-    public const int Id = 6;
-    public const int MainCamera = 7;
+    public const int Destroyed = 0;
+    public const int GameObject = 1;
+    public const int GridPosition = 2;
+    public const int Id = 3;
+    public const int ImageColor = 4;
+    public const int Image = 5;
+    public const int MainCamera = 6;
+    public const int MainCanvas = 7;
     public const int Player = 8;
     public const int Position = 9;
     public const int Rotation = 10;
@@ -25,33 +25,27 @@ public static class GameComponentsLookup {
     public const int TextColor = 14;
     public const int TextMeshProText = 15;
     public const int Tile = 16;
-    public const int TileHealth = 17;
-    public const int TileHealthLink = 18;
-    public const int TileIconLink = 19;
-    public const int TileLink = 20;
-    public const int TileMaxHealth = 21;
-    public const int TileName = 22;
-    public const int TileNameLink = 23;
-    public const int Touchable = 24;
-    public const int Touch = 25;
-    public const int Touched = 26;
-    public const int UnityAnimator = 27;
-    public const int UnityAnimatorBool = 28;
-    public const int UnityAnimatorFloat = 29;
-    public const int UnityAnimatorInt = 30;
-    public const int UnityAnimatorRequested = 31;
+    public const int TileLink = 17;
+    public const int Touchable = 18;
+    public const int Touch = 19;
+    public const int Touched = 20;
+    public const int UnityAnimator = 21;
+    public const int UnityAnimatorBool = 22;
+    public const int UnityAnimatorFloat = 23;
+    public const int UnityAnimatorInt = 24;
+    public const int UnityAnimatorRequested = 25;
 
-    public const int TotalComponents = 32;
+    public const int TotalComponents = 26;
 
     public static readonly string[] componentNames = {
-        "Activeness",
-        "CubicPosition",
         "Destroyed",
-        "EmptyTile",
         "GameObject",
         "GridPosition",
         "Id",
+        "ImageColor",
+        "Image",
         "MainCamera",
+        "MainCanvas",
         "Player",
         "Position",
         "Rotation",
@@ -61,13 +55,7 @@ public static class GameComponentsLookup {
         "TextColor",
         "TextMeshProText",
         "Tile",
-        "TileHealth",
-        "TileHealthLink",
-        "TileIconLink",
         "TileLink",
-        "TileMaxHealth",
-        "TileName",
-        "TileNameLink",
         "Touchable",
         "Touch",
         "Touched",
@@ -79,13 +67,14 @@ public static class GameComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(Activeness),
         typeof(Destroyed),
-        typeof(EmptyTile),
         typeof(GameObjectComponent),
         typeof(GridPosition),
         typeof(Id),
+        typeof(ImageColor),
+        typeof(ImageComponent),
         typeof(MainCamera),
+        typeof(MainCanvas),
         typeof(Player),
         typeof(Position),
         typeof(Rotation),
@@ -95,11 +84,7 @@ public static class GameComponentsLookup {
         typeof(TextColor),
         typeof(TextMeshProText),
         typeof(Tile),
-        typeof(TileHealthLink),
-        typeof(TileIconLink),
         typeof(TileLink),
-        typeof(TileName),
-        typeof(TileNameLink),
         typeof(Touchable),
         typeof(TouchComponent),
         typeof(Touched),

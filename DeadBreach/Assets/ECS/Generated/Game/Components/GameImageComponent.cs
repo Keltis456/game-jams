@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public TileName tileName { get { return (TileName)GetComponent(GameComponentsLookup.TileName); } }
-    public bool hasTileName { get { return HasComponent(GameComponentsLookup.TileName); } }
+    public ImageComponent image { get { return (ImageComponent)GetComponent(GameComponentsLookup.Image); } }
+    public bool hasImage { get { return HasComponent(GameComponentsLookup.Image); } }
 
-    public void AddTileName(string newValue) {
-        var index = GameComponentsLookup.TileName;
-        var component = (TileName)CreateComponent(index, typeof(TileName));
+    public void AddImage(UnityEngine.UI.Image newValue) {
+        var index = GameComponentsLookup.Image;
+        var component = (ImageComponent)CreateComponent(index, typeof(ImageComponent));
         component.value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceTileName(string newValue) {
-        var index = GameComponentsLookup.TileName;
-        var component = (TileName)CreateComponent(index, typeof(TileName));
+    public void ReplaceImage(UnityEngine.UI.Image newValue) {
+        var index = GameComponentsLookup.Image;
+        var component = (ImageComponent)CreateComponent(index, typeof(ImageComponent));
         component.value = newValue;
         ReplaceComponent(index, component);
     }
 
-    public void RemoveTileName() {
-        RemoveComponent(GameComponentsLookup.TileName);
+    public void RemoveImage() {
+        RemoveComponent(GameComponentsLookup.Image);
     }
 }
 
@@ -40,17 +40,17 @@ public partial class GameEntity {
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherTileName;
+    static Entitas.IMatcher<GameEntity> _matcherImage;
 
-    public static Entitas.IMatcher<GameEntity> TileName {
+    public static Entitas.IMatcher<GameEntity> Image {
         get {
-            if (_matcherTileName == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.TileName);
+            if (_matcherImage == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.Image);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherTileName = matcher;
+                _matcherImage = matcher;
             }
 
-            return _matcherTileName;
+            return _matcherImage;
         }
     }
 }

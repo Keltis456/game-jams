@@ -16,19 +16,15 @@ namespace DeadBreach.ECS.Systems.Map
         public void Initialize()
         {
             for (var i = 0; i < SizeX; i++)
-            {
-                for (var j = 0; j < SizeY; j++)
-                {
-                    CreateNewTile(new Vector3Int(i,j,0));
-                }
-            }
+            for (var j = 0; j < SizeY; j++)
+                CreateNewTile(new Vector2Int(i, j));
         }
         
-        private void CreateNewTile(Vector3Int position)
+        private void CreateNewTile(Vector2Int position)
         {
-            var e = game.CreateEntity();
-            e.isTile = true;
-            e.AddGridPosition(position);
+            var entity = game.CreateEntity();
+            entity.isTile = true;
+            entity.AddGridPosition(position);
         }
     }
 }
