@@ -15,11 +15,8 @@ namespace DeadBreach.ECS.Systems.Map
 
         public void Execute()
         {
-            foreach (var tile in tiles)
-            {
-                DeadBreach.ECS.Extensions.Extensions.TestPathFinder();
+            foreach (var tile in tiles) 
                 tile.ReplaceImageColor(Color.green);
-            }
         }
     }
 }

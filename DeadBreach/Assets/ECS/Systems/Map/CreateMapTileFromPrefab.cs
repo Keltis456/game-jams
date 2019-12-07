@@ -1,4 +1,5 @@
-﻿using Entitas;
+﻿using DeadBreach.ECS.Extensions;
+using Entitas;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,15 +7,15 @@ namespace DeadBreach.ECS.Systems.Map
 {
     public class CreateMapTileFromPrefab : IExecuteSystem
     {
-        private readonly Canvas canvas;
+        private readonly GameContext game;
         private readonly GameObject mapTilePrefab;
-        private readonly IGroup<GameEntity> entities;
+        private readonly IGroup<GameEntity> tiles;
 
-        public CreateMapTileFromPrefab(GameContext game, Canvas canvas, GameObject mapTilePrefab)
+        public CreateMapTileFromPrefab(GameContext game, GameObject mapTilePrefab)
         {
-            this.canvas = canvas;
+            this.game = game;
             this.mapTilePrefab = mapTilePrefab;
-            entities = game.GetGroup(GameMatcher
+            tiles = game.GetGroup(GameMatcher
                 .AllOf(
                     GameMatcher.Tile)
                 .NoneOf(
@@ -23,21 +24,16 @@ namespace DeadBreach.ECS.Systems.Map
 
         public void Execute()
         {
-            foreach (var entity in entities.GetEntities())
+            foreach (var tile in tiles.GetEntities())
             {
-                entity.AddId(entity.creationIndex);
-                entity.AddGameObject(Object.Instantiate(mapTilePrefab, canvas.transform));
-                
-                entity.AddPosition(mapTilePrefab.transform.position);
-                entity.AddRotation(mapTilePrefab.transform.rotation.eulerAngles);
-                entity.AddScale(mapTilePrefab.transform.localScale);
-                
-                entity.isTouchable = true;
+                tile.AddAndSetupGameObject(Object.Instantiate(mapTilePrefab, Vector3.zero, Quaternion.identity, game.mainCanvas.value.transform));
+                tile.isTouchable = true;
 
-                var image = entity.gameObject.value.GetComponent<Image>();
+                var image = tile.gameObject.value.GetComponent<Image>();
                 if (image) 
-                    entity.AddImage(image);
+                    tile.AddImage(image);
             }
         }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using Entitas;
+﻿using System.Collections.Generic;
+using Entitas;
 using Entitas.CodeGeneration.Attributes;
 using TMPro;
 using UnityEngine;
@@ -29,6 +30,10 @@ public class Player : IComponent { }
 public class Tile : IComponent { }
 public class Target : IComponent { }
 public class GridPosition : IComponent { public Vector2Int value; }
+public class StartTile : IComponent { }
+
+public class PathFinderAgent : IComponent { }
+public class PathFinderPath : IComponent { public List<Vector2Int> value; }
 
 
 public class ImageComponent : IComponent{ public Image value; }
