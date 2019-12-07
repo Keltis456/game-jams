@@ -8,9 +8,11 @@ namespace DeadBreach.ECS.Extensions
 {
     public static class Extensions
     {
+        private static GameContext Game => Contexts.sharedInstance.game;
+
         public static readonly Vector2Int[] GridDirections = {
-            new Vector2Int(+1, 0), new Vector2Int(0, +1),
-            new Vector2Int(-1, 0), new Vector2Int(0, -1)
+            new Vector2Int(+0, +1), new Vector2Int(+1, +0),
+            new Vector2Int(+0, -1), new Vector2Int(-1, +0)
         };
         
         public static bool IsNeighborToTile(this Vector2Int @this, Vector2Int target) => 
@@ -23,74 +25,63 @@ namespace DeadBreach.ECS.Extensions
 
         public static void TestPathFinder()
         {
-            string output = "";
-            var wave = FindWave(new Vector2Int(0, 0), 8, 8);
-            for (int i = 0; i < wave.GetLength(0); i++)
-            {
-                for (int j = 0; j < wave.GetLength(1); j++)
-                {
-                    output += $"{wave[i, j],3}";
-                }
-
-                output += "\n";
-            }
-            Debug.Log(output);
-            Move(wave, new Vector2Int(0, 0), new Vector2Int(8, 8));
-
-            //foreach (var tile in new Vector2Int().FindPathToTile(new Vector2Int(0, 8)))
-            //    Debug.Log($"{tile.x} : {tile.y}");
+            new Vector2Int(0, 0).FindPathToTile(new Vector2Int(8, 8), GetAllTiles());
         }
 
-        private static void Move(int[,] cMap, Vector2Int start, Vector2Int target)
+        public static List<Vector2Int> FindPathToTile(this Vector2Int start, Vector2Int target, GameEntity[] tiles)
         {
-            var minValue = int.MaxValue;
-            Vector2Int tileWithMinValue = new Vector2Int(-9999, -9999);
-            foreach (var neighborTile in GetNeighborTiles(start, GetAllTiles()))
+            var result = new List<Vector2Int>();
+            var cMap = FindWave(start, target);
+            while (true)
             {
-                var value = cMap[neighborTile.gridPosition.value.x, neighborTile.gridPosition.value.y];
-                if (value < minValue && value >= 0)
+                var minValue = int.MaxValue;
+                var tileWithMinValue = new Vector2Int(-9999, -9999);
+                foreach (var neighborTile in GetNeighborTiles(start, tiles))
                 {
-                    minValue = value;
-                    tileWithMinValue = new Vector2Int(neighborTile.gridPosition.value.x, neighborTile.gridPosition.value.y);
+                    var value = cMap[neighborTile.gridPosition.value.x, neighborTile.gridPosition.value.y];
+                    if (value < minValue && value >= 0)
+                    {
+                        minValue = value;
+                        tileWithMinValue = new Vector2Int(neighborTile.gridPosition.value.x, neighborTile.gridPosition.value.y);
+                    }
                 }
-            }
 
-            if (tileWithMinValue != new Vector2Int(-9999, -9999))
-            {
-                Debug.Log($"{tileWithMinValue.x} : {tileWithMinValue.y}");
-                if (tileWithMinValue != target)
-                {
-                    Move(cMap, tileWithMinValue, target);
-                }
+                if (tileWithMinValue == new Vector2Int(-9999, -9999)) return result;
+                Debug.Log(tileWithMinValue);
+                result.Add(tileWithMinValue);
+                if (tileWithMinValue == target) return result;
+                start = tileWithMinValue;
             }
         }
 
-        public static int[,] FindWave(Vector2Int start, int targetX, int targetY)
+        public static void AddAndSetupGameObject(this GameEntity entity, GameObject gameObject)
+        {
+            entity.AddId(entity.creationIndex);
+            entity.AddGameObject(gameObject);
+
+            entity.AddPosition(gameObject.transform.position);
+            entity.AddRotation(gameObject.transform.rotation.eulerAngles);
+            entity.AddScale(gameObject.transform.localScale);
+        }
+
+        private static int[,] FindWave(Vector2Int start, Vector2Int target)
         {
             var battlefield = new Vector2Int(9,9);
 
-            bool add = true; // условие выхода из цикла
-            // делаем копию карты локации, для дальнейшей ее разметки
             var cMap = new int[battlefield.x, battlefield.y];
-            int x, y, step = 0; // значение шага равно 0
+            int x, y, step = 0;
             for (x = 0; x < battlefield.x; x++)
             for (y = 0; y < battlefield.y; y++)
-            {
-                cMap[x, y] = -1; //иначе еще не ступали сюда
-            }
+                cMap[x, y] = -1;
 
-            //начинаем отсчет с финиша, так будет удобней востанавливать путь
-            cMap[targetX, targetY] = 0;
-            while (add == true)
+            cMap[target.x, target.y] = 0;
+            while (true)
             {
-                add = false;
                 for (x = 0; x < battlefield.x; x++)
                 for (y = 0; y < battlefield.y; y++)
                 {
                     if (cMap[x, y] == step)
                     {
-                        // если соседняя клетка не стена, и если она еще не помечена
-                        // то помечаем ее значением шага + 1
                         if (y - 1 >= 0 && cMap[x, y - 1] != -2 && cMap[x, y - 1] == -1)
                             cMap[x, y - 1] = step + 1;
                         if (x - 1 >= 0 && cMap[x - 1, y] != -2 && cMap[x - 1, y] == -1)
@@ -103,50 +94,37 @@ namespace DeadBreach.ECS.Extensions
                 }
 
                 step++;
-                add = true;
-                if (cMap[start.x,start.y] > 0) //решение найдено
-                    add = false;
-                if (step > battlefield.x * battlefield.y) //решение не найдено, если шагов больше чем клеток
-                    add = false;
+                if (cMap[start.x,start.y] > 0 || step > battlefield.x * battlefield.y)
+                    break;
             }
-
-            return cMap; // возвращаем помеченную матрицу, для востановления пути в методе move()
+            cMap.DebugLog();
+            return cMap;
         }
 
-        public static List<Vector2Int> FindPathToTile(this Vector2Int @this, Vector2Int target, List<Vector2Int> previousResult = null, GameEntity[] allTiles = null)
+        public static void DebugLog(this int[,] array)
         {
-            var result = previousResult ?? new List<Vector2Int>();
-
-            var tiles = allTiles ?? GetAllTiles();
-
-            var neighborTiles = GetNeighborTiles(@this, tiles);
-            foreach (var resultTile in result) 
-                neighborTiles.Remove(neighborTiles.FindTileWithPosition(resultTile));
-
-            foreach (var neighborTile in neighborTiles)
+            var output = "";
+            for (var i = 0; i < array.GetLength(0); i++)
             {
-                if (neighborTile.gridPosition.value == target)
+                for (var j = 0; j < array.GetLength(1); j++)
                 {
-                    result.Add(neighborTile.gridPosition.value);
-                    return result;
+                    output += $"{array[i, j],3}";
                 }
-                else
-                {
-                    result.Add(neighborTile.gridPosition.value);
-                    return neighborTile.gridPosition.value.FindPathToTile(target, result, tiles);
-                }
+
+                output += "\n";
             }
 
-            return null;
+            Debug.Log(output);
         }
 
         private static GameEntity[] GetAllTiles()
         {
-            return Contexts.sharedInstance.game
+            return Game
                 .GetGroup(GameMatcher
                     .AllOf(GameMatcher.Tile, GameMatcher.GridPosition))
                 .GetEntities();
         }
+
 
         private static List<GameEntity> GetNeighborTiles(Vector2Int @this, GameEntity[] tiles)
         {
