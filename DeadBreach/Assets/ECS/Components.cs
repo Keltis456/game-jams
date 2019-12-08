@@ -28,6 +28,8 @@ public class Destroyed : IComponent { }
 
 public class Player : IComponent { }
 public class Tile : IComponent { }
+public class PathTile : IComponent { }
+public class PathEndTile : IComponent { }
 public class Target : IComponent { }
 public class GridPosition : IComponent { public Vector2Int value; }
 public class StartTile : IComponent { }

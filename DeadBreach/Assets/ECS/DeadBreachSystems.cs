@@ -5,13 +5,17 @@ namespace DeadBreach.ECS
 {
 	public sealed class DeadBreachSystems : Feature
 	{
-        public DeadBreachSystems(GameContext game, Canvas canvas, GameObject mapTilePrefab, GameObject playerPrefab)
+        public DeadBreachSystems(
+            GameContext game, 
+            Canvas canvas, 
+            GameObject mapTilePrefab, GameObject pathTilePrefab, GameObject pathTileEndPrefab, 
+            GameObject playerPrefab)
         {
             Add(new ScreenFeature(game, canvas));
             
             Add(new TouchFeature(game));
 
-            Add(new MapFeature(game, mapTilePrefab, playerPrefab));
+            Add(new MapFeature(game, mapTilePrefab, pathTilePrefab, pathTileEndPrefab, playerPrefab));
             Add(new PathFindingFeature(game));
 
             Add(new AnimatorFeature(game));

@@ -16,29 +16,31 @@ public static class GameComponentsLookup {
     public const int Image = 5;
     public const int MainCamera = 6;
     public const int MainCanvas = 7;
-    public const int PathFinderAgent = 8;
-    public const int PathFinderPath = 9;
-    public const int Player = 10;
-    public const int Position = 11;
-    public const int Rotation = 12;
-    public const int Scale = 13;
-    public const int StartTile = 14;
-    public const int Target = 15;
-    public const int Text = 16;
-    public const int TextColor = 17;
-    public const int TextMeshProText = 18;
-    public const int Tile = 19;
-    public const int TileLink = 20;
-    public const int Touchable = 21;
-    public const int Touch = 22;
-    public const int Touched = 23;
-    public const int UnityAnimator = 24;
-    public const int UnityAnimatorBool = 25;
-    public const int UnityAnimatorFloat = 26;
-    public const int UnityAnimatorInt = 27;
-    public const int UnityAnimatorRequested = 28;
+    public const int PathEndTile = 8;
+    public const int PathFinderAgent = 9;
+    public const int PathFinderPath = 10;
+    public const int PathTile = 11;
+    public const int Player = 12;
+    public const int Position = 13;
+    public const int Rotation = 14;
+    public const int Scale = 15;
+    public const int StartTile = 16;
+    public const int Target = 17;
+    public const int Text = 18;
+    public const int TextColor = 19;
+    public const int TextMeshProText = 20;
+    public const int Tile = 21;
+    public const int TileLink = 22;
+    public const int Touchable = 23;
+    public const int Touch = 24;
+    public const int Touched = 25;
+    public const int UnityAnimator = 26;
+    public const int UnityAnimatorBool = 27;
+    public const int UnityAnimatorFloat = 28;
+    public const int UnityAnimatorInt = 29;
+    public const int UnityAnimatorRequested = 30;
 
-    public const int TotalComponents = 29;
+    public const int TotalComponents = 31;
 
     public static readonly string[] componentNames = {
         "Destroyed",
@@ -49,8 +51,10 @@ public static class GameComponentsLookup {
         "Image",
         "MainCamera",
         "MainCanvas",
+        "PathEndTile",
         "PathFinderAgent",
         "PathFinderPath",
+        "PathTile",
         "Player",
         "Position",
         "Rotation",
@@ -81,8 +85,10 @@ public static class GameComponentsLookup {
         typeof(ImageComponent),
         typeof(MainCamera),
         typeof(MainCanvas),
+        typeof(PathEndTile),
         typeof(PathFinderAgent),
         typeof(PathFinderPath),
+        typeof(PathTile),
         typeof(Player),
         typeof(Position),
         typeof(Rotation),
