@@ -1,8 +1,9 @@
-﻿using DeadBreach.ECS.Systems.Touch;
+﻿using System;
+using DeadBreach.ECS.Systems.Touch;
 
 namespace DeadBreach.ECS.Systems
 {
-    internal class TouchFeature : Feature
+    internal sealed class TouchFeature : Feature
     {
         public TouchFeature(GameContext game)
         {
@@ -10,11 +11,12 @@ namespace DeadBreach.ECS.Systems
 
             Add(new CreateTouchOnLeftMouseDown(game));
             Add(new CreateTouchWhenTouchBegan(game));
-
             Add(new MarkTouchAsDestroyed(game));
 
             Add(new MarkTouchableAsTouched(game));
+            Add(new HandlePointerEnter(game));
 
+            Add(new DestroyPointerEnter(game));
             Add(new UnmarkTouchedTouchables(game));
         }
     }

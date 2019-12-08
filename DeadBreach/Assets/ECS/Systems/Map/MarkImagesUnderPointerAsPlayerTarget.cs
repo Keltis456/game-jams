@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace DeadBreach.ECS.Systems.Map
 {
-    public class MarkTouchedImagesAsPlayerTarget : IExecuteSystem
+    public class MarkImagesUnderPointerAsPlayerTarget : IExecuteSystem
     {
         private readonly IGroup<GameEntity> tiles;
         private readonly IGroup<GameEntity> players;
 
-        public MarkTouchedImagesAsPlayerTarget(GameContext game)
+        public MarkImagesUnderPointerAsPlayerTarget(GameContext game)
         {
             players = game.GetGroup(GameMatcher
                 .AllOf(
@@ -19,7 +19,7 @@ namespace DeadBreach.ECS.Systems.Map
 
             tiles = game.GetGroup(GameMatcher
                 .AllOf(
-                    GameMatcher.Touched,
+                    GameMatcher.PointerEnter,
                     GameMatcher.Image,
                     GameMatcher.GridPosition));
         }

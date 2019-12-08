@@ -2,23 +2,23 @@
 
 namespace DeadBreach.ECS.Systems.PathFinding
 {
-    public class SetPathTiles : IExecuteSystem
+    public class RemoveDestroyedPathTiles : IExecuteSystem
     {
         private readonly IGroup<GameEntity> agents;
         private readonly IGroup<GameEntity> tiles;
 
-        public SetPathTiles(GameContext game)
+        public RemoveDestroyedPathTiles(GameContext game)
         {
             agents = game.GetGroup(GameMatcher
                 .AllOf(
-                    GameMatcher.PathFinderAgent, 
-                    GameMatcher.PathFinderPath));
+                    GameMatcher.PathFinderAgent,
+                    GameMatcher.PathFinderPath,
+                    GameMatcher.PathDestroyed));
 
             tiles = game.GetGroup(GameMatcher
                 .AllOf(
-                    GameMatcher.Tile, 
-                    GameMatcher.GridPosition)
-                .NoneOf(
+                    GameMatcher.Tile,
+                    GameMatcher.GridPosition,
                     GameMatcher.PathTile));
         }
 
@@ -27,15 +27,11 @@ namespace DeadBreach.ECS.Systems.PathFinding
             foreach (var agent in agents)
             foreach (var pathNode in agent.pathFinderPath.value)
             foreach (var tile in tiles.GetEntities())
-                if(tile.gridPosition.value == pathNode && agent.pathFinderPath.value.IndexOf(pathNode) != agent.pathFinderPath.value.Count-1)
+                if (tile.gridPosition.value == pathNode && agent.pathFinderPath.value.IndexOf(pathNode) != agent.pathFinderPath.value.Count - 1)
                 {
+                    tile.isPathTile = false;
                     tile.isGameObjectDestroyed = true;
-                    tile.isPathTile = true;
-                    if (tile.isExPathTile)
-                    {
-                        tile.isGameObjectDestroyed = false;
-                        tile.isExPathTile = false;
-                    }
+                    tile.isExPathTile = true;
                 }
         }
     }

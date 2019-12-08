@@ -1,6 +1,5 @@
 ﻿using System;
 using DeadBreach.ECS.Systems.Map;
-using Entitas;
 using UnityEngine;
 
 namespace DeadBreach.ECS.Systems
@@ -25,41 +24,10 @@ namespace DeadBreach.ECS.Systems
             //if touched == target -> move to target
             //else -> remove target
             
-            Add(new RemoveOldNonConfirmedTargetAndPlayerPathOnTouch(game));
-            Add(new MarkTouchedImagesAsPlayerTarget(game));
+            Add(new RemoveOldNonConfirmedTargetAndPlayerPathOnPointerEnter(game));
+            Add(new MarkImagesUnderPointerAsPlayerTarget(game));
             
             //Add(new DebugTouchedImagesByColor(game));
-        }
-    }
-
-    public class RemoveOldNonConfirmedTargetAndPlayerPathOnTouch : IExecuteSystem
-    {
-        private readonly IGroup<GameEntity> tiles;
-        private readonly IGroup<GameEntity> players;
-
-        public RemoveOldNonConfirmedTargetAndPlayerPathOnTouch(GameContext game)
-        {
-            players = game.GetGroup(GameMatcher
-                .AllOf(
-                    GameMatcher.Player,
-                    GameMatcher.Target,
-                    GameMatcher.PathFinderPath));
-
-            tiles = game.GetGroup(GameMatcher
-                .AllOf(
-                    GameMatcher.Touched,
-                    GameMatcher.Image));
-        }
-
-        public void Execute()
-        {
-            foreach (var tile in tiles)
-            foreach (var player in players.GetEntities())
-                if(player.target.value != tile.gridPosition.value)
-                {
-                    player.isPathDestroyed = true;
-                    player.RemoveTarget();
-                }
         }
     }
 }

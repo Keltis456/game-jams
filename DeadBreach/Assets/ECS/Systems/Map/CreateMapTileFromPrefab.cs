@@ -28,7 +28,7 @@ namespace DeadBreach.ECS.Systems.Map
             {
                 tile.ReplaceAndSetupGameObject(Object.Instantiate(mapTilePrefab, Vector3.zero, Quaternion.identity, game.mainCanvas.value.transform));
                 tile.isTouchable = true;
-
+                tile.isPointerEnterHandler = true;
                 var image = tile.gameObject.value.GetComponent<Image>();
                 if (image) 
                     tile.ReplaceImage(image);

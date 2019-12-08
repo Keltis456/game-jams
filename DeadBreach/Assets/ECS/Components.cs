@@ -17,7 +17,8 @@ public class TouchComponent : IComponent { }
 public class Touchable : IComponent { }
 public class Touched : IComponent { }
 
-
+public class PointerEnterHandler : IComponent { }
+public class PointerEnter : IComponent { }
 
 public class GameObjectComponent : IComponent { public GameObject value; }
 public class Position : IComponent { public Vector3 value; }
@@ -30,7 +31,9 @@ public class Destroyed : IComponent { }
 public class Player : IComponent { }
 public class Tile : IComponent { }
 public class PathTile : IComponent { }
+public class ExPathTile : IComponent { }
 public class PathEndTile : IComponent { }
+public class ExPathEndTile : IComponent { }
 public class PathDestroyed : IComponent { }
 public class Target : IComponent { public Vector2Int value; }
 public class GridPosition : IComponent { public Vector2Int value; }

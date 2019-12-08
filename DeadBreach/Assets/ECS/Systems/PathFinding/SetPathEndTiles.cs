@@ -26,8 +26,13 @@ namespace DeadBreach.ECS.Systems.PathFinding
             foreach (var tile in tiles.GetEntities())
                 if(tile.gridPosition.value == pathNode && agent.pathFinderPath.value.IndexOf(pathNode) == agent.pathFinderPath.value.Count-1)
                 {
-                    tile.isPathEndTile = true;
                     tile.isGameObjectDestroyed = true;
+                    tile.isPathEndTile = true;
+                    if (tile.isExPathEndTile)
+                    {
+                        tile.isGameObjectDestroyed = false;
+                        tile.isExPathEndTile = false;
+                    }
                 }
         }
     }

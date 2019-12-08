@@ -9,43 +9,49 @@
 public static class GameComponentsLookup {
 
     public const int Destroyed = 0;
-    public const int GameObject = 1;
-    public const int GameObjectDestroyed = 2;
-    public const int GridPosition = 3;
-    public const int Id = 4;
-    public const int ImageColor = 5;
-    public const int Image = 6;
-    public const int MainCamera = 7;
-    public const int MainCanvas = 8;
-    public const int PathDestroyed = 9;
-    public const int PathEndTile = 10;
-    public const int PathFinderAgent = 11;
-    public const int PathFinderPath = 12;
-    public const int PathTile = 13;
-    public const int Player = 14;
-    public const int Position = 15;
-    public const int Rotation = 16;
-    public const int Scale = 17;
-    public const int StartTile = 18;
-    public const int Target = 19;
-    public const int Text = 20;
-    public const int TextColor = 21;
-    public const int TextMeshProText = 22;
-    public const int Tile = 23;
-    public const int TileLink = 24;
-    public const int Touchable = 25;
-    public const int Touch = 26;
-    public const int Touched = 27;
-    public const int UnityAnimator = 28;
-    public const int UnityAnimatorBool = 29;
-    public const int UnityAnimatorFloat = 30;
-    public const int UnityAnimatorInt = 31;
-    public const int UnityAnimatorRequested = 32;
+    public const int ExPathEndTile = 1;
+    public const int ExPathTile = 2;
+    public const int GameObject = 3;
+    public const int GameObjectDestroyed = 4;
+    public const int GridPosition = 5;
+    public const int Id = 6;
+    public const int ImageColor = 7;
+    public const int Image = 8;
+    public const int MainCamera = 9;
+    public const int MainCanvas = 10;
+    public const int PathDestroyed = 11;
+    public const int PathEndTile = 12;
+    public const int PathFinderAgent = 13;
+    public const int PathFinderPath = 14;
+    public const int PathTile = 15;
+    public const int Player = 16;
+    public const int PointerEnter = 17;
+    public const int PointerEnterHandler = 18;
+    public const int Position = 19;
+    public const int Rotation = 20;
+    public const int Scale = 21;
+    public const int StartTile = 22;
+    public const int Target = 23;
+    public const int Text = 24;
+    public const int TextColor = 25;
+    public const int TextMeshProText = 26;
+    public const int Tile = 27;
+    public const int TileLink = 28;
+    public const int Touchable = 29;
+    public const int Touch = 30;
+    public const int Touched = 31;
+    public const int UnityAnimator = 32;
+    public const int UnityAnimatorBool = 33;
+    public const int UnityAnimatorFloat = 34;
+    public const int UnityAnimatorInt = 35;
+    public const int UnityAnimatorRequested = 36;
 
-    public const int TotalComponents = 33;
+    public const int TotalComponents = 37;
 
     public static readonly string[] componentNames = {
         "Destroyed",
+        "ExPathEndTile",
+        "ExPathTile",
         "GameObject",
         "GameObjectDestroyed",
         "GridPosition",
@@ -60,6 +66,8 @@ public static class GameComponentsLookup {
         "PathFinderPath",
         "PathTile",
         "Player",
+        "PointerEnter",
+        "PointerEnterHandler",
         "Position",
         "Rotation",
         "Scale",
@@ -82,6 +90,8 @@ public static class GameComponentsLookup {
 
     public static readonly System.Type[] componentTypes = {
         typeof(Destroyed),
+        typeof(ExPathEndTile),
+        typeof(ExPathTile),
         typeof(GameObjectComponent),
         typeof(GameObjectDestroyed),
         typeof(GridPosition),
@@ -96,6 +106,8 @@ public static class GameComponentsLookup {
         typeof(PathFinderPath),
         typeof(PathTile),
         typeof(Player),
+        typeof(PointerEnter),
+        typeof(PointerEnterHandler),
         typeof(Position),
         typeof(Rotation),
         typeof(Scale),

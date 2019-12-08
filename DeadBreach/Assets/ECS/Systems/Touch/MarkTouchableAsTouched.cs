@@ -38,8 +38,6 @@ namespace DeadBreach.ECS.Systems.Touch
                 foreach (var result in results)
                     if (hit.collider?.gameObject == touchable.gameObject.value || result.gameObject == touchable.gameObject.value)
                         touchable.isTouched = true;
-
-                
             }
         }
     }
