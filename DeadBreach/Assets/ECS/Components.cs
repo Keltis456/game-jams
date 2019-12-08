@@ -40,6 +40,7 @@ public class GridPosition : IComponent { public Vector2Int value; }
 public class StartTile : IComponent { }
 
 public class PathFinderAgent : IComponent { }
+public class PathFinderObstacle : IComponent { }
 public class PathFinderPath : IComponent { public List<Vector2Int> value; }
 
 

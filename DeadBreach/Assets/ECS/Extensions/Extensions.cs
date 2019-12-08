@@ -22,16 +22,30 @@ namespace DeadBreach.ECS.Extensions
             tiles
                 .Where(tile => tile.hasGridPosition)
                 .FirstOrDefault(tile => tile.gridPosition.value == position);
-
-        public static void TestPathFinder()
+        
+        public static void DebugLog(this int[,] array)
         {
-            new Vector2Int(0, 0).FindPathToTile(new Vector2Int(8, 8), GetAllTiles());
-        }
+            var output = "";
+            for (var i = 0; i < array.GetLength(0); i++)
+            {
+                for (var j = 0; j < array.GetLength(1); j++)
+                {
+                    output += $"{array[i, j],3}";
+                }
 
-        public static List<Vector2Int> FindPathToTile(this Vector2Int start, Vector2Int target, GameEntity[] tiles)
+                output += "\n";
+            }
+
+            Debug.Log(output);
+        }
+        
+        public static bool IsAnyObstacle(this Vector2Int tile, GameEntity[] obstacles) => 
+            obstacles.Any(obstacle => obstacle.gridPosition.value == tile);
+
+        public static List<Vector2Int> FindPathToTile(this Vector2Int start, Vector2Int target, GameEntity[] tiles, GameEntity[] obstacles, Vector2Int mapSize)
         {
             var result = new List<Vector2Int>();
-            var cMap = FindWave(start, target);
+            var cMap = FindWave(BuildObstacleMap(obstacles, mapSize), start, target);
             while (true)
             {
                 var minValue = int.MaxValue;
@@ -64,57 +78,51 @@ namespace DeadBreach.ECS.Extensions
             entity.ReplaceScale(gameObject.transform.localScale);
         }
 
-        private static int[,] FindWave(Vector2Int start, Vector2Int target)
+        private static int[,] FindWave(int[,] map, Vector2Int start, Vector2Int target)
         {
-            var battlefield = new Vector2Int(9,9);
+            var step = 0;
+            for (var x = 0; x < map.GetLength(0); x++)
+            for (var y = 0; y < map.GetLength(1); y++)
+                if (map[x,y] != -2)
+                    map[x, y] = -1;
 
-            var cMap = new int[battlefield.x, battlefield.y];
-            int x, y, step = 0;
-            for (x = 0; x < battlefield.x; x++)
-            for (y = 0; y < battlefield.y; y++)
-                cMap[x, y] = -1;
-
-            cMap[target.x, target.y] = 0;
+            map[target.x, target.y] = 0;
             while (true)
             {
-                for (x = 0; x < battlefield.x; x++)
-                for (y = 0; y < battlefield.y; y++)
+                for (var x = 0; x < map.GetLength(0); x++)
+                for (var y = 0; y < map.GetLength(1); y++)
                 {
-                    if (cMap[x, y] == step)
-                    {
-                        if (y - 1 >= 0 && cMap[x, y - 1] != -2 && cMap[x, y - 1] == -1)
-                            cMap[x, y - 1] = step + 1;
-                        if (x - 1 >= 0 && cMap[x - 1, y] != -2 && cMap[x - 1, y] == -1)
-                            cMap[x - 1, y] = step + 1;
-                        if (y + 1 < battlefield.y && cMap[x, y + 1] != -2 && cMap[x, y + 1] == -1)
-                            cMap[x, y + 1] = step + 1;
-                        if (x + 1 < battlefield.x && cMap[x + 1, y] != -2 && cMap[x + 1, y] == -1)
-                            cMap[x + 1, y] = step + 1;
-                    }
+                    if (map[x, y] != step) 
+                        continue;
+                    if (y - 1 >= 0 && map[x, y - 1] != -2 && map[x, y - 1] == -1)
+                        map[x, y - 1] = step + 1;
+                    if (x - 1 >= 0 && map[x - 1, y] != -2 && map[x - 1, y] == -1)
+                        map[x - 1, y] = step + 1;
+                    if (y + 1 < map.GetLength(1) && map[x, y + 1] != -2 && map[x, y + 1] == -1)
+                        map[x, y + 1] = step + 1;
+                    if (x + 1 < map.GetLength(0) && map[x + 1, y] != -2 && map[x + 1, y] == -1)
+                        map[x + 1, y] = step + 1;
                 }
 
                 step++;
-                if (cMap[start.x,start.y] > 0 || step > battlefield.x * battlefield.y)
+                if (map[start.x,start.y] > 0 || step > map.GetLength(0) * map.GetLength(1))
                     break;
             }
-            cMap.DebugLog();
-            return cMap;
+            map.DebugLog();
+            return map;
         }
 
-        public static void DebugLog(this int[,] array)
+        private static int[,] BuildObstacleMap(GameEntity[] obstacles, Vector2Int mapSize)
         {
-            var output = "";
-            for (var i = 0; i < array.GetLength(0); i++)
-            {
-                for (var j = 0; j < array.GetLength(1); j++)
-                {
-                    output += $"{array[i, j],3}";
-                }
+            var result = new int[mapSize.x, mapSize.y];
 
-                output += "\n";
+            foreach (var obstacle in obstacles)
+            {
+                var position = obstacle.gridPosition.value;
+                result[position.x, position.y] = -2;
             }
 
-            Debug.Log(output);
+            return result;
         }
 
         private static GameEntity[] GetAllTiles()

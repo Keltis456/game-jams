@@ -1,5 +1,7 @@
 ﻿using DeadBreach.ECS.Extensions;
+using DeadBreach.ECS.Systems.Map;
 using Entitas;
+using UnityEngine;
 
 namespace DeadBreach.ECS.Systems.PathFinding
 {
@@ -7,6 +9,7 @@ namespace DeadBreach.ECS.Systems.PathFinding
     {
         private readonly IGroup<GameEntity> agents;
         private readonly IGroup<GameEntity> tiles;
+        private readonly IGroup<GameEntity> obstacles;
 
         public FindPathFromAgentToTarget(GameContext game)
         {
@@ -22,16 +25,32 @@ namespace DeadBreach.ECS.Systems.PathFinding
                 .AllOf(
                     GameMatcher.Tile, 
                     GameMatcher.GridPosition));
+
+            obstacles = game.GetGroup(GameMatcher
+                .AllOf(
+                    GameMatcher.PathFinderObstacle,
+                    GameMatcher.GridPosition));
         }
 
         public void Execute()
         {
             foreach (var agent in agents.GetEntities())
             {
-                var path = agent.gridPosition.value.FindPathToTile(agent.target.value, tiles.GetEntities());
-                if (path != null && path.Count > 0) 
+                if (agent.target.value.IsAnyObstacle(obstacles.GetEntities()))
+                {
+                    agent.RemoveTarget();
+                    continue;
+                }
+
+                var path = agent.gridPosition.value.FindPathToTile(agent.target.value, tiles.GetEntities(), obstacles.GetEntities(), new Vector2Int(InitializeMapWithNewTiles.SizeX, InitializeMapWithNewTiles.SizeY));
+                if (path != null && path.Count > 0)
+                {
                     agent.AddPathFinderPath(path);
+                    break;
+                }
             }
         }
+
+        
     }
 }

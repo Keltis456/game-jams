@@ -26,6 +26,7 @@ namespace DeadBreach.ECS.Systems.Map
                     var player = game.CreateEntity();
                     player.isPlayer = true;
                     player.isPathFinderAgent = true;
+                    player.isPathFinderObstacle = true;
                     player.AddGridPosition(startTile.gridPosition.value);
                 }
             }

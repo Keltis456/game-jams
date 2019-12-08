@@ -22,31 +22,32 @@ public static class GameComponentsLookup {
     public const int PathDestroyed = 11;
     public const int PathEndTile = 12;
     public const int PathFinderAgent = 13;
-    public const int PathFinderPath = 14;
-    public const int PathTile = 15;
-    public const int Player = 16;
-    public const int PointerEnter = 17;
-    public const int PointerEnterHandler = 18;
-    public const int Position = 19;
-    public const int Rotation = 20;
-    public const int Scale = 21;
-    public const int StartTile = 22;
-    public const int Target = 23;
-    public const int Text = 24;
-    public const int TextColor = 25;
-    public const int TextMeshProText = 26;
-    public const int Tile = 27;
-    public const int TileLink = 28;
-    public const int Touchable = 29;
-    public const int Touch = 30;
-    public const int Touched = 31;
-    public const int UnityAnimator = 32;
-    public const int UnityAnimatorBool = 33;
-    public const int UnityAnimatorFloat = 34;
-    public const int UnityAnimatorInt = 35;
-    public const int UnityAnimatorRequested = 36;
+    public const int PathFinderObstacle = 14;
+    public const int PathFinderPath = 15;
+    public const int PathTile = 16;
+    public const int Player = 17;
+    public const int PointerEnter = 18;
+    public const int PointerEnterHandler = 19;
+    public const int Position = 20;
+    public const int Rotation = 21;
+    public const int Scale = 22;
+    public const int StartTile = 23;
+    public const int Target = 24;
+    public const int Text = 25;
+    public const int TextColor = 26;
+    public const int TextMeshProText = 27;
+    public const int Tile = 28;
+    public const int TileLink = 29;
+    public const int Touchable = 30;
+    public const int Touch = 31;
+    public const int Touched = 32;
+    public const int UnityAnimator = 33;
+    public const int UnityAnimatorBool = 34;
+    public const int UnityAnimatorFloat = 35;
+    public const int UnityAnimatorInt = 36;
+    public const int UnityAnimatorRequested = 37;
 
-    public const int TotalComponents = 37;
+    public const int TotalComponents = 38;
 
     public static readonly string[] componentNames = {
         "Destroyed",
@@ -63,6 +64,7 @@ public static class GameComponentsLookup {
         "PathDestroyed",
         "PathEndTile",
         "PathFinderAgent",
+        "PathFinderObstacle",
         "PathFinderPath",
         "PathTile",
         "Player",
@@ -103,6 +105,7 @@ public static class GameComponentsLookup {
         typeof(PathDestroyed),
         typeof(PathEndTile),
         typeof(PathFinderAgent),
+        typeof(PathFinderObstacle),
         typeof(PathFinderPath),
         typeof(PathTile),
         typeof(Player),
