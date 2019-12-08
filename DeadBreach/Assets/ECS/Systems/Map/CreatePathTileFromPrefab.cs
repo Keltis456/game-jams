@@ -26,12 +26,12 @@ namespace DeadBreach.ECS.Systems.Map
         {
             foreach (var tile in tiles.GetEntities())
             {
-                tile.AddAndSetupGameObject(Object.Instantiate(pathTilePrefab, Vector3.zero, Quaternion.identity, game.mainCanvas.value.transform));
+                tile.ReplaceAndSetupGameObject(Object.Instantiate(pathTilePrefab, Vector3.zero, Quaternion.identity, game.mainCanvas.value.transform));
                 tile.isTouchable = true;
 
                 var image = tile.gameObject.value.GetComponent<Image>();
                 if (image) 
-                    tile.AddImage(image);
+                    tile.ReplaceImage(image);
             }
         }
     }

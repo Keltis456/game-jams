@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly Target targetComponent = new Target();
+    public Target target { get { return (Target)GetComponent(GameComponentsLookup.Target); } }
+    public bool hasTarget { get { return HasComponent(GameComponentsLookup.Target); } }
 
-    public bool isTarget {
-        get { return HasComponent(GameComponentsLookup.Target); }
-        set {
-            if (value != isTarget) {
-                var index = GameComponentsLookup.Target;
-                if (value) {
-                    var componentPool = GetComponentPool(index);
-                    var component = componentPool.Count > 0
-                            ? componentPool.Pop()
-                            : targetComponent;
+    public void AddTarget(UnityEngine.Vector2Int newValue) {
+        var index = GameComponentsLookup.Target;
+        var component = (Target)CreateComponent(index, typeof(Target));
+        component.value = newValue;
+        AddComponent(index, component);
+    }
 
-                    AddComponent(index, component);
-                } else {
-                    RemoveComponent(index);
-                }
-            }
-        }
+    public void ReplaceTarget(UnityEngine.Vector2Int newValue) {
+        var index = GameComponentsLookup.Target;
+        var component = (Target)CreateComponent(index, typeof(Target));
+        component.value = newValue;
+        ReplaceComponent(index, component);
+    }
+
+    public void RemoveTarget() {
+        RemoveComponent(GameComponentsLookup.Target);
     }
 }
 

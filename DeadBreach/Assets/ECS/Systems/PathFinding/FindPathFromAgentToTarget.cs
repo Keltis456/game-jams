@@ -3,23 +3,18 @@ using Entitas;
 
 namespace DeadBreach.ECS.Systems.PathFinding
 {
-    public class FindPathFromPlayerToTarget : IExecuteSystem
+    public class FindPathFromAgentToTarget : IExecuteSystem
     {
-        private readonly IGroup<GameEntity> targets;
         private readonly IGroup<GameEntity> agents;
         private readonly IGroup<GameEntity> tiles;
 
-        public FindPathFromPlayerToTarget(GameContext game)
+        public FindPathFromAgentToTarget(GameContext game)
         {
-            targets = game.GetGroup(GameMatcher
-                .AllOf(
-                    GameMatcher.Target,
-                    GameMatcher.GridPosition));
-
             agents = game.GetGroup(GameMatcher
                 .AllOf(
                     GameMatcher.PathFinderAgent,
-                    GameMatcher.GridPosition)
+                    GameMatcher.GridPosition,
+                    GameMatcher.Target)
                 .NoneOf(
                     GameMatcher.PathFinderPath));
 
@@ -31,10 +26,9 @@ namespace DeadBreach.ECS.Systems.PathFinding
 
         public void Execute()
         {
-            foreach (var target in targets)
             foreach (var agent in agents.GetEntities())
             {
-                var path = agent.gridPosition.value.FindPathToTile(target.gridPosition.value, tiles.GetEntities());
+                var path = agent.gridPosition.value.FindPathToTile(agent.target.value, tiles.GetEntities());
                 if (path != null && path.Count > 0) 
                     agent.AddPathFinderPath(path);
             }

@@ -54,14 +54,14 @@ namespace DeadBreach.ECS.Extensions
             }
         }
 
-        public static void AddAndSetupGameObject(this GameEntity entity, GameObject gameObject)
+        public static void ReplaceAndSetupGameObject(this GameEntity entity, GameObject gameObject)
         {
-            entity.AddId(entity.creationIndex);
-            entity.AddGameObject(gameObject);
+            entity.ReplaceId(entity.creationIndex);
+            entity.ReplaceGameObject(gameObject);
 
-            entity.AddPosition(gameObject.transform.position);
-            entity.AddRotation(gameObject.transform.rotation.eulerAngles);
-            entity.AddScale(gameObject.transform.localScale);
+            entity.ReplacePosition(gameObject.transform.position);
+            entity.ReplaceRotation(gameObject.transform.rotation.eulerAngles);
+            entity.ReplaceScale(gameObject.transform.localScale);
         }
 
         private static int[,] FindWave(Vector2Int start, Vector2Int target)

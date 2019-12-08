@@ -10,7 +10,7 @@ namespace DeadBreach.ECS.Systems.Destroy
 		public DestroyGameObjectsMarkedForDestroy(GameContext game) =>
 			entities = game.GetGroup(
 				GameMatcher.AllOf(
-					GameMatcher.Destroyed,
+					GameMatcher.GameObjectDestroyed,
 					GameMatcher.GameObject));
 		
 		public void Cleanup()
@@ -19,7 +19,8 @@ namespace DeadBreach.ECS.Systems.Destroy
 			{
 				Object.Destroy(entity.gameObject.value);
 				entity.RemoveGameObject();
-			}
+                entity.isGameObjectDestroyed = false;
+            }
 		}
 	}
 }

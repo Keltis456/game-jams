@@ -6,6 +6,7 @@ namespace DeadBreach.ECS.Systems
 	{
 		public DestroyFeature(GameContext game)
 		{
+			Add(new MarkGameObjectsForDestroyBeforeDestroyingEntities(game));
 			Add(new DestroyGameObjectsMarkedForDestroy(game));
 			Add(new DestroyEntitiesMarkedForDestroy(game));
 		}

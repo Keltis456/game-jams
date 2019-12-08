@@ -20,7 +20,7 @@ namespace DeadBreach.ECS.Systems.Map
         public void Execute()
         {
             foreach (var player in players.GetEntities()) 
-                player.AddAndSetupGameObject(Object.Instantiate(playerPrefab));
+                player.ReplaceAndSetupGameObject(Object.Instantiate(playerPrefab));
         }
     }
 }

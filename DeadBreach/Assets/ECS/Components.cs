@@ -24,13 +24,15 @@ public class Position : IComponent { public Vector3 value; }
 public class Scale : IComponent { public Vector3 value; }
 public class Rotation : IComponent { public Vector3 value; }
 
+public class GameObjectDestroyed : IComponent { }
 public class Destroyed : IComponent { }
 
 public class Player : IComponent { }
 public class Tile : IComponent { }
 public class PathTile : IComponent { }
 public class PathEndTile : IComponent { }
-public class Target : IComponent { }
+public class PathDestroyed : IComponent { }
+public class Target : IComponent { public Vector2Int value; }
 public class GridPosition : IComponent { public Vector2Int value; }
 public class StartTile : IComponent { }
 
