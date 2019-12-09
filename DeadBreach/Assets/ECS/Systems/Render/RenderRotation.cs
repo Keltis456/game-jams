@@ -8,7 +8,13 @@ namespace DeadBreach.ECS.Systems.Render
         private readonly IGroup<GameEntity> entities;
 
         public RenderRotation(GameContext game) =>
-            entities = game.GetGroup(GameMatcher.AllOf(GameMatcher.GameObject, GameMatcher.Rotation));
+            entities = game.GetGroup(
+                GameMatcher
+                    .AllOf(
+                        GameMatcher.GameObject, 
+                        GameMatcher.Rotation)
+                    .NoneOf(
+                        GameMatcher.TweenPlaying));
 
         public void Execute()
         {

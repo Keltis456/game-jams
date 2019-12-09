@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using DeadBreach.ECS;
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
+using Entitas.VisualDebugging.Unity;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -42,6 +44,7 @@ public class StartTile : IComponent { }
 public class PathFinderAgent : IComponent { }
 public class PathFinderObstacle : IComponent { }
 public class PathFinderPath : IComponent { public List<Vector2Int> value; }
+public class PathFinderPathConfirmed : IComponent { }
 
 
 public class ImageComponent : IComponent{ public Image value; }
@@ -54,7 +57,9 @@ public class UnityAnimatorFloat : IComponent { public string name; public float 
 public class UnityAnimatorInt : IComponent { public string name; public int value; public Animator animator;}
 public class UnityAnimatorBool : IComponent { public string name; public bool value; public Animator animator;}
 
-
+[DontDrawComponent] public class Tween : IComponent { public DG.Tweening.Tween value; }
+public class TweenPlaying : IComponent { }
+public class TweenMove : IComponent { public TweenTransform to; }
 
 public class TextMeshProText : IComponent { public TMP_Text value; }
 public class Text : IComponent { public string value; }

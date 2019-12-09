@@ -7,7 +7,13 @@ namespace DeadBreach.ECS.Systems.Render
         private readonly IGroup<GameEntity> entities;
 
         public RenderScale(GameContext game) =>
-            entities = game.GetGroup(GameMatcher.AllOf(GameMatcher.GameObject, GameMatcher.Scale));
+            entities = game.GetGroup(
+                GameMatcher
+                    .AllOf(
+                        GameMatcher.GameObject, 
+                        GameMatcher.Scale)
+                    .NoneOf(
+                        GameMatcher.TweenPlaying));
 
         public void Execute()
         {

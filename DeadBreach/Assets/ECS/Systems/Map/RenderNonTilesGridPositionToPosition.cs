@@ -15,16 +15,14 @@ namespace DeadBreach.ECS.Systems.Map
                 .AllOf(
                     GameMatcher.GridPosition,
                     GameMatcher.Position)
-                .NoneOf(GameMatcher.Tile));
+                .NoneOf(
+                    GameMatcher.Tile));
         }
 
         public void Execute()
         {
             foreach (var entity in entities)
-            {
-                var position = game.mainCanvas.value.transform.position;
-                entity.ReplacePosition(new Vector3(entity.gridPosition.value.x + position.x, 0, entity.gridPosition.value.y + position.z));
-            }
+                entity.ReplacePosition(entity.gridPosition.value.GridToWorld(game.mainCanvas.value.transform.position));
         }
     }
 }

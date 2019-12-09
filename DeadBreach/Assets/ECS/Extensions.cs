@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace DeadBreach.ECS.Extensions
+namespace DeadBreach.ECS
 {
     public static class Extensions
     {
@@ -14,7 +12,32 @@ namespace DeadBreach.ECS.Extensions
             new Vector2Int(+0, +1), new Vector2Int(+1, +0),
             new Vector2Int(+0, -1), new Vector2Int(-1, +0)
         };
-        
+
+        public static float RotationToTile(this Vector2Int @this, Vector2Int target)
+        {
+            var result = target - @this;
+            switch (result.x)
+            {
+                case 1:
+                    return 90;
+                case -1:
+                    return -90;
+            }
+
+            switch (result.y)
+            {
+                case 1:
+                    return 0;
+                case -1:
+                    return 180;
+            }
+
+            return 0;
+        }
+
+        public static Vector3 GridToWorld(this Vector2Int gridPosition, Vector3 canvasPosition) => 
+            new Vector3(gridPosition.x + canvasPosition.x, 0, gridPosition.y + canvasPosition.z);
+
         public static bool IsNeighborToTile(this Vector2Int @this, Vector2Int target) => 
             GridDirections.Any(direction => @this + direction == target);
 

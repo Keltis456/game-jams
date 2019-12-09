@@ -15,7 +15,8 @@ namespace DeadBreach.ECS.Systems.Map
                     GameMatcher.Player,
                     GameMatcher.GridPosition)
                 .NoneOf(
-                    GameMatcher.Target));
+                    GameMatcher.Target,
+                    GameMatcher.PathFinderPathConfirmed));
 
             tiles = game.GetGroup(GameMatcher
                 .AllOf(

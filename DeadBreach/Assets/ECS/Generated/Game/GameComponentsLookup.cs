@@ -24,30 +24,34 @@ public static class GameComponentsLookup {
     public const int PathFinderAgent = 13;
     public const int PathFinderObstacle = 14;
     public const int PathFinderPath = 15;
-    public const int PathTile = 16;
-    public const int Player = 17;
-    public const int PointerEnter = 18;
-    public const int PointerEnterHandler = 19;
-    public const int Position = 20;
-    public const int Rotation = 21;
-    public const int Scale = 22;
-    public const int StartTile = 23;
-    public const int Target = 24;
-    public const int Text = 25;
-    public const int TextColor = 26;
-    public const int TextMeshProText = 27;
-    public const int Tile = 28;
-    public const int TileLink = 29;
-    public const int Touchable = 30;
-    public const int Touch = 31;
-    public const int Touched = 32;
-    public const int UnityAnimator = 33;
-    public const int UnityAnimatorBool = 34;
-    public const int UnityAnimatorFloat = 35;
-    public const int UnityAnimatorInt = 36;
-    public const int UnityAnimatorRequested = 37;
+    public const int PathFinderPathConfirmed = 16;
+    public const int PathTile = 17;
+    public const int Player = 18;
+    public const int PointerEnter = 19;
+    public const int PointerEnterHandler = 20;
+    public const int Position = 21;
+    public const int Rotation = 22;
+    public const int Scale = 23;
+    public const int StartTile = 24;
+    public const int Target = 25;
+    public const int Text = 26;
+    public const int TextColor = 27;
+    public const int TextMeshProText = 28;
+    public const int Tile = 29;
+    public const int TileLink = 30;
+    public const int Touchable = 31;
+    public const int Touch = 32;
+    public const int Touched = 33;
+    public const int Tween = 34;
+    public const int TweenMove = 35;
+    public const int TweenPlaying = 36;
+    public const int UnityAnimator = 37;
+    public const int UnityAnimatorBool = 38;
+    public const int UnityAnimatorFloat = 39;
+    public const int UnityAnimatorInt = 40;
+    public const int UnityAnimatorRequested = 41;
 
-    public const int TotalComponents = 38;
+    public const int TotalComponents = 42;
 
     public static readonly string[] componentNames = {
         "Destroyed",
@@ -66,6 +70,7 @@ public static class GameComponentsLookup {
         "PathFinderAgent",
         "PathFinderObstacle",
         "PathFinderPath",
+        "PathFinderPathConfirmed",
         "PathTile",
         "Player",
         "PointerEnter",
@@ -83,6 +88,9 @@ public static class GameComponentsLookup {
         "Touchable",
         "Touch",
         "Touched",
+        "Tween",
+        "TweenMove",
+        "TweenPlaying",
         "UnityAnimator",
         "UnityAnimatorBool",
         "UnityAnimatorFloat",
@@ -107,6 +115,7 @@ public static class GameComponentsLookup {
         typeof(PathFinderAgent),
         typeof(PathFinderObstacle),
         typeof(PathFinderPath),
+        typeof(PathFinderPathConfirmed),
         typeof(PathTile),
         typeof(Player),
         typeof(PointerEnter),
@@ -124,6 +133,9 @@ public static class GameComponentsLookup {
         typeof(Touchable),
         typeof(TouchComponent),
         typeof(Touched),
+        typeof(Tween),
+        typeof(TweenMove),
+        typeof(TweenPlaying),
         typeof(UnityAnimator),
         typeof(UnityAnimatorBool),
         typeof(UnityAnimatorFloat),

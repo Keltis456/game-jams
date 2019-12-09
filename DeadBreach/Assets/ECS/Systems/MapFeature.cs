@@ -21,13 +21,9 @@ namespace DeadBreach.ECS.Systems
             Add(new RenderTilesGridPositionToPosition(game));
             Add(new RenderNonTilesGridPositionToPosition(game));
             
-            //if touched == target -> move to target
-            //else -> remove target
-            
+            Add(new SetTouchedPlayerTargetAsConfirmedPath(game));
             Add(new RemoveOldNonConfirmedTargetAndPlayerPathOnPointerEnter(game));
             Add(new MarkImagesUnderPointerAsPlayerTarget(game));
-            
-            //Add(new DebugTouchedImagesByColor(game));
         }
     }
 }

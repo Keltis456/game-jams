@@ -6,8 +6,14 @@ namespace DeadBreach.ECS.Systems.Render
 	{
         private readonly IGroup<GameEntity> entities;
 
-        public RenderPosition(GameContext game) => 
-            entities = game.GetGroup(GameMatcher.AllOf(GameMatcher.GameObject, GameMatcher.Position));
+        public RenderPosition(GameContext game) =>
+            entities = game.GetGroup(
+                GameMatcher
+                    .AllOf(
+                        GameMatcher.GameObject,
+                        GameMatcher.Position)
+                    .NoneOf(
+                        GameMatcher.TweenPlaying));
 
         public void Execute()
         {

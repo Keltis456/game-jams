@@ -1,5 +1,4 @@
-﻿using DeadBreach.ECS.Extensions;
-using Entitas;
+﻿using Entitas;
 using UnityEngine;
 using UnityEngine.UI;
 
