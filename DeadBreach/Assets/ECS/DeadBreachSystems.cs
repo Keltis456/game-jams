@@ -36,6 +36,7 @@ namespace DeadBreach.ECS
     {
         private readonly GameContext game;
         private readonly IGroup<GameEntity> agents;
+        private IGroup<GameEntity> tiles;
 
         public MoveAgentToNextConfirmedPathPoint(GameContext game)
         {
@@ -48,6 +49,11 @@ namespace DeadBreach.ECS
                     GameMatcher.Target)
                 .NoneOf(
                     GameMatcher.TweenPlaying));
+            
+            tiles = game.GetGroup(GameMatcher
+                .AllOf(
+                    GameMatcher.Tile, 
+                    GameMatcher.GridPosition));
         }
 
         public void Execute()
@@ -65,8 +71,7 @@ namespace DeadBreach.ECS
 
                 Vector2Int nextNode;
                 var i = path.IndexOf(agent.gridPosition.value);
-                //if (i == -1) 
-                //    i = 0;
+                
                 if (i + 1 < path.Count)
                     nextNode = path[i + 1];
                 else
@@ -78,6 +83,10 @@ namespace DeadBreach.ECS
                         new Vector3(agent.rotation.value.x, agent.gridPosition.value.RotationToTile(nextNode), agent.rotation.value.z), 
                         agent.scale.value));
                 agent.ReplaceGridPosition(nextNode);
+                
+                foreach (var tile in tiles)
+                    if (tile.gridPosition.value == agent.gridPosition.value)
+                        tile.isDestroyedTile = true;
             }
         }
     }

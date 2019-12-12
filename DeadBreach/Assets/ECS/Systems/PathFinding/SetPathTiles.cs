@@ -31,10 +31,9 @@ namespace DeadBreach.ECS.Systems.PathFinding
                 {
                     tile.isGameObjectDestroyed = true;
                     tile.isPathTile = true;
-                    if (tile.isExPathTile)
+                    if (tile.isDestroyedTile)
                     {
                         tile.isGameObjectDestroyed = false;
-                        tile.isExPathTile = false;
                     }
                 }
         }

@@ -33,9 +33,8 @@ public class Destroyed : IComponent { }
 public class Player : IComponent { }
 public class Tile : IComponent { }
 public class PathTile : IComponent { }
-public class ExPathTile : IComponent { }
 public class PathEndTile : IComponent { }
-public class ExPathEndTile : IComponent { }
+public class DestroyedTile : IComponent { }
 public class PathDestroyed : IComponent { }
 public class Target : IComponent { public Vector2Int value; }
 public class GridPosition : IComponent { public Vector2Int value; }

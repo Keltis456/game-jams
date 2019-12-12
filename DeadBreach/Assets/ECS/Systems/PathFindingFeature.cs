@@ -16,8 +16,7 @@ namespace DeadBreach.ECS.Systems
             Add(new SetPathTiles(game));
             Add(new SetPathEndTiles(game));
 
-            Add(new UnMarkExPathTiles(game));
-            Add(new UnMarkExPathEndTiles(game));
+            Add(new UnMarkDestroyedTiles(game));
 
         }
     }
