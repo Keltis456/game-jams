@@ -35,7 +35,8 @@ public class PlayerMovement : MonoBehaviour
     private bool inputJump;
     private bool inputInteract;
     private bool inputSwitch;
-    
+    private bool inputReload;
+
     private void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -47,10 +48,21 @@ public class PlayerMovement : MonoBehaviour
         inputJump = Input.GetAxisRaw("Jump") > 0;
         inputInteract = Input.GetButtonDown("Interact");
         inputSwitch = Input.GetButtonDown("Switch");
+        inputReload = Input.GetButtonDown("Reload");
+        ReloadOnInput();
         SwitchOnInput();
 
     }
-	
+
+    private void ReloadOnInput()
+    {
+        if (!inputReload)
+        {
+            return;
+        }
+        GameManager.Instance.LoadGame();
+    }
+
     private void FixedUpdate()
     {
         CheckGrounded();

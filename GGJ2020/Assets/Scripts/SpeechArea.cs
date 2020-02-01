@@ -6,8 +6,7 @@ using UnityEngine;
 
 public class SpeechArea : MonoBehaviour
 {
-    [TextArea]
-    [SerializeField] private string text;
+    [TextArea] [SerializeField] private string text;
 
     [SerializeField] private GameObject backImage;
     private bool isShown;
