@@ -492,7 +492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  primaryJumpForce: 260
+  primaryJumpForce: 270
   switchedJumpForce: 250
   primaryBodyCollider: {fileID: 15942981}
   switchedBodyCollider: {fileID: 9141249989909548117}
