@@ -21,8 +21,6 @@ public class PlayerMovement : MonoBehaviour
     private bool rightWallTouched;
     private bool leftWallTouched;
 
-    private bool isSwitched;
-    
     private float inputMove;
     private bool inputJump;
     private bool inputInteract;
@@ -39,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
         inputJump = Input.GetAxisRaw("Jump") > 0;
         inputInteract = Input.GetButtonDown("Interact");
         inputSwitch = Input.GetButtonDown("Switch");
+        SwitchOnInput();
+
     }
 	
     private void FixedUpdate()
@@ -46,7 +46,6 @@ public class PlayerMovement : MonoBehaviour
         CheckGrounded();
         CheckWalls();
 
-        SwitchOnInput();
         MoveOnInput();
         JumpOnInput();
     }
@@ -57,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
-        if (isSwitched)
+        if (WorldSwitcher.GetCurrentWorld() == World.Switched)
         {
             HideSwitchMask();
         }
@@ -65,18 +64,18 @@ public class PlayerMovement : MonoBehaviour
         {           
             ShowSwitchMask();
         }
-        isSwitched = !isSwitched;
+        WorldSwitcher.SwitchWorld();
         Debug.Log("Switch");
     }
 
     private void ShowSwitchMask()
     {
-        switchMask.DOScale(0f, 1.5f);
+        switchMask.DOScale(0f, 1f);
     }
 
     private void HideSwitchMask()
     {
-        switchMask.DOScale(50f, 1.5f);
+        switchMask.DOScale(40f, 1f);
     }
 
     private void MoveOnInput()
@@ -140,12 +139,37 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckGrounded()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
+        isGrounded = false;
+        foreach (var collider2D1 in Physics2D.OverlapCircleAll(groundCheck.position, groundedRadius, whatIsGround))
+        {
+            if (!collider2D1.isTrigger)
+            {
+                isGrounded = true;
+                break;
+            }
+        }
     }
     private void CheckWalls()
     {
-        rightWallTouched = Physics2D.OverlapBox(RightWallCheckerPosition(), WallCheckerSize(),0f, whatIsGround);
-        leftWallTouched = Physics2D.OverlapBox(LeftWallCheckerPosition(), WallCheckerSize(),0f, whatIsGround);
+        rightWallTouched = false;
+        leftWallTouched = false;
+        foreach (var collider2D1 in Physics2D.OverlapBoxAll(RightWallCheckerPosition(), WallCheckerSize(),0f, whatIsGround))
+        {
+            if (!collider2D1.isTrigger)
+            {
+                rightWallTouched = true;
+                break;
+            }
+        }
+        
+        foreach (var collider2D1 in Physics2D.OverlapBoxAll(LeftWallCheckerPosition(), WallCheckerSize(),0f, whatIsGround))
+        {
+            if (!collider2D1.isTrigger)
+            {
+                leftWallTouched = true;
+                break;
+            }
+        }
     }
 
     private Vector2 WallCheckerSize() => new Vector2(0.1f, bodyCollider.bounds.size.y);

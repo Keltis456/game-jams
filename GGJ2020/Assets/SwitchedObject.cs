@@ -1,10 +1,52 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SwitchedObject : MonoBehaviour
 {
-    [SerializeField] private World world;
+    public World GetWorld()
+    {
+        switch (GetComponent<SpriteRenderer>().maskInteraction)
+        {
+            case SpriteMaskInteraction.None:
+                return World.None;
+            case SpriteMaskInteraction.VisibleInsideMask:
+                return World.Switched;
+            case SpriteMaskInteraction.VisibleOutsideMask:
+                return World.Primary;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+    }
+
+    private void OnEnable()
+    {
+        WorldSwitcher.WorldSwitched += OnWorldSwitched;
+    }
     
-    
+    private void OnDisable()
+    {
+        WorldSwitcher.WorldSwitched -= OnWorldSwitched;
+    }
+
+    private void OnWorldSwitched(World world)
+    {
+        foreach (var collider2D in GetComponentsInChildren<Collider2D>())
+        {
+            switch (GetWorld())
+            {
+                case World.None:
+                    break;
+                case World.Primary:
+                    collider2D.isTrigger = world == World.Primary;
+                    break;
+                case World.Switched:
+                    collider2D.isTrigger = world == World.Switched;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+    }
 }
