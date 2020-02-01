@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -11,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float groundedRadius;
     [SerializeField] private LayerMask whatIsGround;
     [Range(0, .3f)] [SerializeField] private float movementSmoothing = .05f;
+    [SerializeField] private Transform switchMask;
     
     private Vector3 velocity = Vector3.zero;
     private new Rigidbody2D rigidbody2D;
@@ -18,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     private bool facingRight;
     private bool rightWallTouched;
     private bool leftWallTouched;
+
+    private bool isSwitched;
     
     private float inputMove;
     private bool inputJump;
@@ -53,7 +57,26 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
+        if (isSwitched)
+        {
+            HideSwitchMask();
+        }
+        else
+        {           
+            ShowSwitchMask();
+        }
+        isSwitched = !isSwitched;
         Debug.Log("Switch");
+    }
+
+    private void ShowSwitchMask()
+    {
+        switchMask.DOScale(0f, 1.5f);
+    }
+
+    private void HideSwitchMask()
+    {
+        switchMask.DOScale(50f, 1.5f);
     }
 
     private void MoveOnInput()
