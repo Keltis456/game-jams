@@ -98,7 +98,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1091805496}
   - component: {fileID: 1091805497}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: "\u0414\u0435\u0432\u043E\u0447\u043A\u0430"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1209134520}
   - component: {fileID: 1209134521}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: "\u0414\u0435\u0432\u0443\u0448\u043A\u0430"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -457,7 +457,7 @@ GameObject:
   - component: {fileID: 9141249989707894414}
   m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
