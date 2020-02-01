@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Range(0, 10f)] [SerializeField] private float speed = 5f;
-    [Range(0, 500f)] [SerializeField] private float jumpForce = 200f;
+    [Range(0, 500f)] [SerializeField] private float primaryJumpForce = 250f;
+    [Range(0, 500f)] [SerializeField] private float switchedJumpForce = 250f;
     [SerializeField] private Collider2D primaryBodyCollider;
     [SerializeField] private Collider2D switchedBodyCollider;
     [SerializeField] private Transform groundCheck;
@@ -13,7 +14,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask whatIsGround;
     [Range(0, .3f)] [SerializeField] private float movementSmoothing = .05f;
     [SerializeField] private Transform switchMask;
-
+    private float CurrentJumpForce => WorldSwitcher.GetCurrentWorld() == World.Primary
+        ? primaryJumpForce
+        : switchedJumpForce;
     private Collider2D CurrentBodyCollider => WorldSwitcher.GetCurrentWorld() == World.Primary
         ? primaryBodyCollider
         : switchedBodyCollider;
@@ -106,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded && inputJump)
         {
             isGrounded = false;
-            rigidbody2D.AddForce(new Vector2(0f, jumpForce));
+            rigidbody2D.AddForce(new Vector2(0f, CurrentJumpForce));
         }
     }
 
