@@ -17,7 +17,7 @@ public class SpeechArea : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other);
+        Debug.Log(other + " : " + other.tag);
         if (other.CompareTag("Player") && !isShown)
         {
             Debug.Log("Player");
@@ -31,7 +31,7 @@ public class SpeechArea : MonoBehaviour
         foreach (var letter in text)
         {
             tmpText.text += letter;
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.01f);
         }
     }
 }

@@ -4899,7 +4899,7 @@ PrefabInstance:
     - target: {fileID: 3478875844796287578, guid: 67dbddea5ee4943669c58e8927d48361,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 3.17
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3478875844796287578, guid: 67dbddea5ee4943669c58e8927d48361,
         type: 3}
@@ -5006,7 +5006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smoothingSpeed: 0.125
-  offset: {x: 0, y: 1.5, z: -500}
+  offset: {x: 0, y: 2.5, z: -500}
 --- !u!81 &704797220
 AudioListener:
   m_ObjectHideFlags: 0
@@ -5024,7 +5024,7 @@ Camera:
   m_GameObject: {fileID: 704797218}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.8018868, g: 0.78297436, b: 0.78297436, a: 1}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
@@ -8324,12 +8324,12 @@ PrefabInstance:
       propertyPath: m_MaskInteraction
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 5835436479748696122, guid: 3874c2585149e084fab80b23a128ae3a,
+    - target: {fileID: 8618637854492962925, guid: 3874c2585149e084fab80b23a128ae3a,
         type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8618637854492962925, guid: 3874c2585149e084fab80b23a128ae3a,
+    - target: {fileID: 5835436479748696122, guid: 3874c2585149e084fab80b23a128ae3a,
         type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -8433,12 +8433,12 @@ PrefabInstance:
       propertyPath: m_MaskInteraction
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5913854509533944863, guid: cbdd30184abd90d41af39fbd856de957,
+    - target: {fileID: 4050910836779845659, guid: cbdd30184abd90d41af39fbd856de957,
         type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4050910836779845659, guid: cbdd30184abd90d41af39fbd856de957,
+    - target: {fileID: 5913854509533944863, guid: cbdd30184abd90d41af39fbd856de957,
         type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -16647,12 +16647,12 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0.52
       objectReference: {fileID: 0}
-    - target: {fileID: 5913854509533944863, guid: cbdd30184abd90d41af39fbd856de957,
+    - target: {fileID: 4050910836779845659, guid: cbdd30184abd90d41af39fbd856de957,
         type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4050910836779845659, guid: cbdd30184abd90d41af39fbd856de957,
+    - target: {fileID: 5913854509533944863, guid: cbdd30184abd90d41af39fbd856de957,
         type: 3}
       propertyPath: m_IsActive
       value: 1

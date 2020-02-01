@@ -12,9 +12,9 @@ public class SwitchedObject : MonoBehaviour
             case SpriteMaskInteraction.None:
                 return World.None;
             case SpriteMaskInteraction.VisibleInsideMask:
-                return World.Switched;
-            case SpriteMaskInteraction.VisibleOutsideMask:
                 return World.Primary;
+            case SpriteMaskInteraction.VisibleOutsideMask:
+                return World.Switched;
             default:
                 throw new ArgumentOutOfRangeException();
         }

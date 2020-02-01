@@ -93,12 +93,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void ShowSwitchMask()
     {
-        switchMask.DOScale(40f, 1f).SetEase(Ease.InQuad);
+        switchMask.DOScale(40f, 0.5f).SetEase(Ease.InQuad);
     }
 
     private void HideSwitchMask()
     {
-        switchMask.DOScale(0f, 1f).SetEase(Ease.OutQuad);
+        switchMask.DOScale(0f, 0.5f).SetEase(Ease.OutQuad);
     }
 
     private void MoveOnInput()
