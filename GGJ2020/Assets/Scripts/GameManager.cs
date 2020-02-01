@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     private void CreatePlayer()
     {
         Debug.Log(checkpointPosition);
-        Instantiate(player, checkpointPosition, Quaternion.identity);
+        Instantiate(player, (Vector2)checkpointPosition, Quaternion.identity);
     }
 
     private void OnEnable()
