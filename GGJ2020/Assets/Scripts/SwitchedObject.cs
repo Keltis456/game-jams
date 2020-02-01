@@ -30,6 +30,12 @@ public class SwitchedObject : MonoBehaviour
         WorldSwitcher.WorldSwitched -= OnWorldSwitched;
     }
 
+    private void Start()
+    {
+        OnWorldSwitched(WorldSwitcher.GetCurrentWorld());
+    }
+
+
     private void OnWorldSwitched(World world)
     {
         foreach (var collider2D in GetComponentsInChildren<Collider2D>())
