@@ -27,12 +27,12 @@ public class GameManager : MonoBehaviour
     {
         this.checkpoint = checkpoint;
     }
-    
+
     public void LoadGame()
     {
         checkpointPosition = checkpoint.transform.position;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        
+
     }
 
     private void CreatePlayer()
@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
+
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
