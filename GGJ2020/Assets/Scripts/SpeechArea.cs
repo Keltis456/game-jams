@@ -8,13 +8,10 @@ public class SpeechArea : MonoBehaviour
 {
     [TextArea] [SerializeField] private string text;
 
-    [SerializeField] private GameObject backImage;
     private bool isShown;
 
     private void Start()
     {
-        backImage.SetActive(false);
-
         GetComponentInChildren<TMP_Text>().text = "";
     }
 
@@ -24,7 +21,6 @@ public class SpeechArea : MonoBehaviour
         if (other.CompareTag("Player") && !isShown)
         {
             Debug.Log("Player");
-            //backImage.SetActive(true);
             isShown = true;
             StartCoroutine(TypeText(GetComponentInChildren<TMP_Text>()));
         }

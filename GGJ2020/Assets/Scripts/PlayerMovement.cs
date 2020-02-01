@@ -78,26 +78,27 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
+        
+        WorldSwitcher.SwitchWorld();
         if (WorldSwitcher.GetCurrentWorld() == World.Switched)
         {
-            HideSwitchMask();
+            ShowSwitchMask();
         }
         else
         {           
-            ShowSwitchMask();
+            HideSwitchMask();
         }
-        WorldSwitcher.SwitchWorld();
-        Debug.Log("Switch");
+        Debug.Log("Switch to " + WorldSwitcher.GetCurrentWorld());
     }
 
     private void ShowSwitchMask()
     {
-        switchMask.DOScale(0f, 1f).SetEase(Ease.OutQuad);
+        switchMask.DOScale(40f, 1f).SetEase(Ease.InQuad);
     }
 
     private void HideSwitchMask()
     {
-        switchMask.DOScale(40f, 1f).SetEase(Ease.InQuad);
+        switchMask.DOScale(0f, 1f).SetEase(Ease.OutQuad);
     }
 
     private void MoveOnInput()
