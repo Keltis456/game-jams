@@ -1421,12 +1421,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1787890903 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1434682594, guid: b6b9b536a5bc94ef1aae5feb839e1df2,
-    type: 3}
-  m_PrefabInstance: {fileID: 9141249989909548114}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1977701252
 GameObject:
   m_ObjectHideFlags: 0
@@ -1518,18 +1512,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 1434682594, guid: b6b9b536a5bc94ef1aae5feb839e1df2, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 1434682594, guid: b6b9b536a5bc94ef1aae5feb839e1df2, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 1434682594, guid: b6b9b536a5bc94ef1aae5feb839e1df2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9141249989707894451, guid: b6b9b536a5bc94ef1aae5feb839e1df2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1583,15 +1565,6 @@ PrefabInstance:
     - target: {fileID: 9141249989707894451, guid: b6b9b536a5bc94ef1aae5feb839e1df2,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9141249989707894413, guid: b6b9b536a5bc94ef1aae5feb839e1df2,
-        type: 3}
-      propertyPath: switchMask
-      value: 
-      objectReference: {fileID: 1787890903}
-    - target: {fileID: 1434682595, guid: b6b9b536a5bc94ef1aae5feb839e1df2, type: 3}
-      propertyPath: m_MaskAlphaCutoff
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

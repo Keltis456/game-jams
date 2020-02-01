@@ -6,13 +6,20 @@ public class PlayerMovement : MonoBehaviour
 {
     [Range(0, 10f)] [SerializeField] private float speed = 5f;
     [Range(0, 500f)] [SerializeField] private float jumpForce = 200f;
-    [SerializeField] private Collider2D bodyCollider;
-    [SerializeField] private Collider2D legsCollider;
+    [SerializeField] private Collider2D primaryBodyCollider;
+    [SerializeField] private Collider2D switchedBodyCollider;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundedRadius;
     [SerializeField] private LayerMask whatIsGround;
     [Range(0, .3f)] [SerializeField] private float movementSmoothing = .05f;
     [SerializeField] private Transform switchMask;
+
+    private Collider2D CurrentBodyCollider => WorldSwitcher.GetCurrentWorld() == World.Primary
+        ? primaryBodyCollider
+        : switchedBodyCollider;
+    private Collider2D NonCurrentBodyCollider => WorldSwitcher.GetCurrentWorld() == World.Switched
+        ? primaryBodyCollider
+        : switchedBodyCollider;
     
     private Vector3 velocity = Vector3.zero;
     private new Rigidbody2D rigidbody2D;
@@ -70,12 +77,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void ShowSwitchMask()
     {
-        switchMask.DOScale(0f, 1f);
+        switchMask.DOScale(0f, 1f).SetEase(Ease.OutQuad);
     }
 
     private void HideSwitchMask()
     {
-        switchMask.DOScale(40f, 1f);
+        switchMask.DOScale(40f, 1f).SetEase(Ease.InQuad);
     }
 
     private void MoveOnInput()
@@ -172,9 +179,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private Vector2 WallCheckerSize() => new Vector2(0.1f, bodyCollider.bounds.size.y);
-    private Vector2 RightWallCheckerPosition() => new Vector2(bodyCollider.bounds.center.x + bodyCollider.bounds.extents.x + 0.01f, bodyCollider.bounds.center.y);
-    private Vector2 LeftWallCheckerPosition() => new Vector2(bodyCollider.bounds.center.x - bodyCollider.bounds.extents.x - 0.01f, bodyCollider.bounds.center.y);
+    private Vector2 WallCheckerSize() => new Vector2(0.1f, CurrentBodyCollider.bounds.size.y);
+    private Vector2 RightWallCheckerPosition() => new Vector2(CurrentBodyCollider.bounds.center.x + CurrentBodyCollider.bounds.extents.x + 0.01f, CurrentBodyCollider.bounds.center.y);
+    private Vector2 LeftWallCheckerPosition() => new Vector2(CurrentBodyCollider.bounds.center.x - CurrentBodyCollider.bounds.extents.x - 0.01f, CurrentBodyCollider.bounds.center.y);
 
     private void Flip()
     {

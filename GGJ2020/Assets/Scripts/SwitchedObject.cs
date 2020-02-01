@@ -7,7 +7,7 @@ public class SwitchedObject : MonoBehaviour
 {
     public World GetWorld()
     {
-        switch (GetComponent<SpriteRenderer>().maskInteraction)
+        switch (GetComponentInChildren<SpriteRenderer>().maskInteraction)
         {
             case SpriteMaskInteraction.None:
                 return World.None;
