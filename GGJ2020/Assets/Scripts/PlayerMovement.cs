@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [Range(0, 10f)] [SerializeField] private float speed = 5f;
     [Range(0, 500f)] [SerializeField] private float primaryJumpForce = 250f;
     [Range(0, 500f)] [SerializeField] private float switchedJumpForce = 250f;
+    [Range(0, 0.1f)] [SerializeField] private float jumpCooldown = 0.1f;
     [SerializeField] private Collider2D primaryBodyCollider;
     [SerializeField] private Collider2D switchedBodyCollider;
     [SerializeField] private Transform groundCheck;
@@ -14,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask whatIsGround;
     [Range(0, .3f)] [SerializeField] private float movementSmoothing = .05f;
     [SerializeField] private Transform switchMask;
+    [SerializeField] private Animator babyGirlAnimator;
+    [SerializeField] private Animator adultGirlAnimator;
     private float CurrentJumpForce => WorldSwitcher.GetCurrentWorld() == World.Primary
         ? primaryJumpForce
         : switchedJumpForce;
@@ -30,12 +33,14 @@ public class PlayerMovement : MonoBehaviour
     private bool facingRight;
     private bool rightWallTouched;
     private bool leftWallTouched;
+    private float currentJumpCooldown;
 
     private float inputMove;
     private bool inputJump;
     private bool inputInteract;
     private bool inputSwitch;
     private bool inputReload;
+    private static readonly int IsWalking = Animator.StringToHash("isWalking");
 
     private void Start()
     {
@@ -51,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
         inputReload = Input.GetButtonDown("Reload");
         ReloadOnInput();
         SwitchOnInput();
-
+        currentJumpCooldown -= Time.deltaTime;
     }
 
     private void ReloadOnInput()
@@ -105,22 +110,34 @@ public class PlayerMovement : MonoBehaviour
     {
         if (inputMove > 0)
         {
+            adultGirlAnimator.SetBool(IsWalking, true);
+            babyGirlAnimator.SetBool(IsWalking, true);
             MoveRight();
         }
         else if (inputMove < 0)
         {
+            adultGirlAnimator.SetBool(IsWalking, true);
+            babyGirlAnimator.SetBool(IsWalking, true);
             MoveLeft();
         }
         else if (inputMove == 0)
         {
+            adultGirlAnimator.SetBool(IsWalking, false);
+            babyGirlAnimator.SetBool(IsWalking, false);
             Move();
+        }
+        if (!isGrounded)
+        {
+            adultGirlAnimator.SetBool(IsWalking, false);
+            babyGirlAnimator.SetBool(IsWalking, false);
         }
     }
 
     private void JumpOnInput()
     {
-        if (isGrounded && inputJump)
+        if (isGrounded && inputJump && currentJumpCooldown <= 0)
         {
+            currentJumpCooldown = jumpCooldown;
             isGrounded = false;
             rigidbody2D.AddForce(new Vector2(0f, CurrentJumpForce));
         }
