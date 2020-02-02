@@ -491,7 +491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31e5101e841647adadaf94b64662bed9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 3
   primaryJumpForce: 270
   switchedJumpForce: 250
   primaryBodyCollider: {fileID: 15942981}
