@@ -1,6 +1,8 @@
-﻿namespace DeadBreach.ECS.Systems
+﻿using DeadBreach.ECS.Systems.Movement;
+
+namespace DeadBreach.ECS.Systems
 {
-    public class MovementFeature : Feature
+    public sealed class MovementFeature : Feature
     {
         public MovementFeature(GameContext game)
         {

@@ -10,55 +10,51 @@ public static class GameComponentsLookup {
 
     public const int Destroyed = 0;
     public const int DestroyedTile = 1;
-    public const int ExPathEndTile = 2;
-    public const int ExPathTile = 3;
-    public const int GameObject = 4;
-    public const int GameObjectDestroyed = 5;
-    public const int GridPosition = 6;
-    public const int Id = 7;
-    public const int ImageColor = 8;
-    public const int Image = 9;
-    public const int MainCamera = 10;
-    public const int MainCanvas = 11;
-    public const int PathDestroyed = 12;
-    public const int PathEndTile = 13;
-    public const int PathFinderAgent = 14;
-    public const int PathFinderObstacle = 15;
-    public const int PathFinderPath = 16;
-    public const int PathFinderPathConfirmed = 17;
-    public const int PathTile = 18;
-    public const int Player = 19;
-    public const int PointerEnter = 20;
-    public const int PointerEnterHandler = 21;
-    public const int Position = 22;
-    public const int Rotation = 23;
-    public const int Scale = 24;
-    public const int StartTile = 25;
-    public const int Target = 26;
-    public const int Text = 27;
-    public const int TextColor = 28;
-    public const int TextMeshProText = 29;
-    public const int Tile = 30;
-    public const int TileLink = 31;
-    public const int Touchable = 32;
-    public const int Touch = 33;
-    public const int Touched = 34;
-    public const int Tween = 35;
-    public const int TweenMove = 36;
-    public const int TweenPlaying = 37;
-    public const int UnityAnimator = 38;
-    public const int UnityAnimatorBool = 39;
-    public const int UnityAnimatorFloat = 40;
-    public const int UnityAnimatorInt = 41;
-    public const int UnityAnimatorRequested = 42;
+    public const int GameObject = 2;
+    public const int GameObjectDestroyed = 3;
+    public const int GridPosition = 4;
+    public const int Id = 5;
+    public const int ImageColor = 6;
+    public const int Image = 7;
+    public const int MainCamera = 8;
+    public const int MainCanvas = 9;
+    public const int PathDestroyed = 10;
+    public const int PathEndTile = 11;
+    public const int PathFinderAgent = 12;
+    public const int PathFinderObstacle = 13;
+    public const int PathFinderPath = 14;
+    public const int PathFinderPathConfirmed = 15;
+    public const int PathTile = 16;
+    public const int Player = 17;
+    public const int PointerEnter = 18;
+    public const int PointerEnterHandler = 19;
+    public const int Position = 20;
+    public const int Rotation = 21;
+    public const int Scale = 22;
+    public const int StartTile = 23;
+    public const int Target = 24;
+    public const int Text = 25;
+    public const int TextColor = 26;
+    public const int TextMeshProText = 27;
+    public const int Tile = 28;
+    public const int TileLink = 29;
+    public const int Touchable = 30;
+    public const int Touch = 31;
+    public const int Touched = 32;
+    public const int Tween = 33;
+    public const int TweenMove = 34;
+    public const int TweenPlaying = 35;
+    public const int UnityAnimator = 36;
+    public const int UnityAnimatorBool = 37;
+    public const int UnityAnimatorFloat = 38;
+    public const int UnityAnimatorInt = 39;
+    public const int UnityAnimatorRequested = 40;
 
-    public const int TotalComponents = 43;
+    public const int TotalComponents = 41;
 
     public static readonly string[] componentNames = {
         "Destroyed",
         "DestroyedTile",
-        "ExPathEndTile",
-        "ExPathTile",
         "GameObject",
         "GameObjectDestroyed",
         "GridPosition",

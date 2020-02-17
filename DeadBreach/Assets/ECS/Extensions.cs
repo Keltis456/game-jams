@@ -84,7 +84,7 @@ namespace DeadBreach.ECS
                 }
 
                 if (tileWithMinValue == new Vector2Int(-9999, -9999)) return result;
-                Debug.Log(tileWithMinValue);
+                //Debug.Log(tileWithMinValue);
                 result.Add(tileWithMinValue);
                 if (tileWithMinValue == target) return result;
                 start = tileWithMinValue;
@@ -131,7 +131,7 @@ namespace DeadBreach.ECS
                 if (map[start.x,start.y] > 0 || step > map.GetLength(0) * map.GetLength(1))
                     break;
             }
-            map.DebugLog();
+            //map.DebugLog();
             return map;
         }
 

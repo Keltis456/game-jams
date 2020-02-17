@@ -1,4 +1,5 @@
 ﻿using Entitas;
+using UnityEngine;
 
 namespace DeadBreach.ECS.Systems.Map
 {
@@ -30,6 +31,7 @@ namespace DeadBreach.ECS.Systems.Map
                 if(player.target.value != tile.gridPosition.value)
                 {
                     player.isPathDestroyed = true;
+                    Debug.Log("Path destroyed");
                     player.RemoveTarget();
                 }
         }
