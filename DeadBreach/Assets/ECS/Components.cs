@@ -35,6 +35,8 @@ public class Tile : IComponent { }
 public class PathTile : IComponent { }
 public class PathEndTile : IComponent { }
 public class DestroyedTile : IComponent { }
+public class DestroyedPathTile : IComponent { }
+public class DestroyedEndTile : IComponent { }
 public class PathDestroyed : IComponent { }
 public class Target : IComponent { public Vector2Int value; }
 public class GridPosition : IComponent { public Vector2Int value; }
@@ -48,6 +50,7 @@ public class PathFinderPathConfirmed : IComponent { }
 
 public class ImageComponent : IComponent{ public Image value; }
 public class ImageColor : IComponent{ public Color value; }
+public class ImageSprite : IComponent{ public Sprite value; }
 
 
 public class UnityAnimatorRequested : IComponent{}

@@ -12,6 +12,7 @@ namespace DeadBreach.ECS.Systems
 			Add(new RenderScale(game));
 
 			Add(new RenderImageColor(game));
+			Add(new RenderImageSprite(game));
         }
 	}
 }

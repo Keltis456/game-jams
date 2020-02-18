@@ -6,8 +6,9 @@ namespace DeadBreach.ECS
     {
         public Canvas Canvas;
         public GameObject MapTilePrefab;
-        public GameObject PathTilePrefab;
-        public GameObject PathTileEndPrefab;
+        public Sprite MapTile;
+        public Sprite PathTile;
+        public Sprite PathTileEndPrefab;
         public GameObject PLayerPrefab;
 
         private Entitas.Systems systems;
@@ -17,7 +18,8 @@ namespace DeadBreach.ECS
                 Contexts.sharedInstance.game,
                 Canvas,
                 MapTilePrefab,
-                PathTilePrefab,
+                MapTile,
+                PathTile,
                 PathTileEndPrefab,
                 PLayerPrefab);
 

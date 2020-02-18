@@ -9,14 +9,15 @@ namespace DeadBreach.ECS
         public DeadBreachSystems(
             GameContext game, 
             Canvas canvas, 
-            GameObject mapTilePrefab, GameObject pathTilePrefab, GameObject pathTileEndPrefab, 
+            GameObject mapTilePrefab,
+            Sprite mapTile, Sprite pathTile, Sprite pathTileEndPrefab, 
             GameObject playerPrefab)
         {
             Add(new ScreenFeature(game, canvas));
             
             Add(new TouchFeature(game));
 
-            Add(new MapFeature(game, mapTilePrefab, pathTilePrefab, pathTileEndPrefab, playerPrefab));
+            Add(new MapFeature(game, mapTilePrefab,mapTile, pathTile, pathTileEndPrefab, playerPrefab));
             Add(new PathFindingFeature(game));
             Add(new MovementFeature(game));
 

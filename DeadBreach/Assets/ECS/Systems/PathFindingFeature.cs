@@ -7,14 +7,15 @@ namespace DeadBreach.ECS.Systems
     {
         public PathFindingFeature(GameContext game)
         {
+            Add(new RemoveDestroyedPathTiles(game));
+            Add(new RemoveDestroyedPathEndTiles(game));
+            Add(new RemoveDestroyedPath(game));
+            
             Add(new FindPathFromAgentToTarget(game));
 
             Add(new SetPathTiles(game));
             Add(new SetPathEndTiles(game));
 
-            Add(new RemoveDestroyedPathTiles(game));
-            Add(new RemoveDestroyedPathEndTiles(game));
-            Add(new RemoveDestroyedPath(game));
 
             Add(new UnMarkDestroyedTiles(game));
 

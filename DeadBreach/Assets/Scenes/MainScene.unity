@@ -2527,12 +2527,9 @@ MonoBehaviour:
   Canvas: {fileID: 31536569}
   MapTilePrefab: {fileID: 1658991678829767808, guid: e1748b43d040e1e4ea137394918e983f,
     type: 3}
-  PathTilePrefab: {fileID: 2715618685923639379, guid: bb04b0bc89fec034c959ef233a1a2708,
-    type: 3}
-  PathTileEndPrefab: {fileID: 3510111627301904880, guid: b9e83340fc48332469cf02c1233007a8,
-    type: 3}
+  MapTile: {fileID: 21300000, guid: 306d84afd7d3bba469d569f573764918, type: 3}
   PathTile: {fileID: 21300000, guid: 1455a57d6f3478342a93b4b1897cf4ac, type: 3}
-  PathTileEnd: {fileID: 21300000, guid: 5846563ffd8b2fc4085dde06d098f195, type: 3}
+  PathTileEndPrefab: {fileID: 21300000, guid: 5846563ffd8b2fc4085dde06d098f195, type: 3}
   PLayerPrefab: {fileID: 1638495899925158353, guid: f1d6c409336c5044b9d50a9367637de7,
     type: 3}
 --- !u!4 &1049972752

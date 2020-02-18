@@ -6,7 +6,7 @@ namespace DeadBreach.ECS.Systems
 {
     public sealed class MapFeature : Feature
     {
-        public MapFeature(GameContext game, GameObject mapTilePrefab, GameObject pathTilePrefab, GameObject pathTileEndPrefab, GameObject playerPrefab)
+        public MapFeature(GameContext game, GameObject mapTilePrefab,Sprite mapTile, Sprite pathTile, Sprite pathTileEnd, GameObject playerPrefab)
         {
             Add(new InitializeMapWithNewTiles(game));
 
@@ -14,8 +14,9 @@ namespace DeadBreach.ECS.Systems
             Add(new SpawnPlayerOnTheStartTile(game));
             
             Add(new CreatePlayerFromPrefab(game, playerPrefab));
-            Add(new CreatePathTileFromPrefab(game, pathTilePrefab));
-            Add(new CreatePathEndTileFromPrefab(game, pathTileEndPrefab));
+            Add(new SetTileSprite(game, mapTile));
+            Add(new SetPathTileSprite(game, pathTile));
+            Add(new SetPathEndTileSprite(game, pathTileEnd));
             Add(new CreateMapTileFromPrefab(game, mapTilePrefab));
 
             Add(new RenderTilesGridPositionToPosition(game));

@@ -30,7 +30,7 @@ namespace DeadBreach.ECS.Systems.PathFinding
                 if (tile.gridPosition.value == pathNode && agent.pathFinderPath.value.IndexOf(pathNode) != agent.pathFinderPath.value.Count - 1)
                 {
                     tile.isPathTile = false;
-                    tile.isGameObjectDestroyed = true;
+                    //tile.isGameObjectDestroyed = true;
                     tile.isDestroyedTile = true;
                 }
         }
