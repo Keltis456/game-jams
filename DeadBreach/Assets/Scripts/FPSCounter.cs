@@ -5,12 +5,29 @@ namespace SpaceLandingSim
 {
     public class FPSCounter : MonoBehaviour
     {
+        private const int UpdateRate = 8;
+
         private TextMeshProUGUI text;
 
-        void Start() => 
+        private int frameCount;
+        private float dt;
+        private float fps;
+        
+        private void Start() => 
             text = GetComponent<TextMeshProUGUI>();
 
-        void Update() => 
-            text.text = ((int)(1f / Time.unscaledDeltaTime)).ToString();
+
+        private void Update()
+        {
+            frameCount++;
+            dt += Time.unscaledDeltaTime;
+            if (dt > 1f/UpdateRate)
+            {
+                fps = frameCount / dt ;
+                text.text = ((int)(fps)).ToString();
+                frameCount = 0;
+                dt -= 1f/UpdateRate;
+            }
+        }
     }
 }
