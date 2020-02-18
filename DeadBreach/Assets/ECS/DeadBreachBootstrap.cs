@@ -10,6 +10,7 @@ namespace DeadBreach.ECS
         public Sprite PathTile;
         public Sprite PathTileEndPrefab;
         public GameObject PLayerPrefab;
+        public GameObject ObstaclePrefab;
 
         private Entitas.Systems systems;
 
@@ -21,7 +22,8 @@ namespace DeadBreach.ECS
                 MapTile,
                 PathTile,
                 PathTileEndPrefab,
-                PLayerPrefab);
+                PLayerPrefab, 
+                ObstaclePrefab);
 
 		private void Start() => 
 			systems.Initialize();

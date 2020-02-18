@@ -19,39 +19,40 @@ public static class GameComponentsLookup {
     public const int ImageSprite = 8;
     public const int MainCamera = 9;
     public const int MainCanvas = 10;
-    public const int PathDestroyed = 11;
-    public const int PathEndTile = 12;
-    public const int PathFinderAgent = 13;
-    public const int PathFinderObstacle = 14;
-    public const int PathFinderPath = 15;
-    public const int PathFinderPathConfirmed = 16;
-    public const int PathTile = 17;
-    public const int Player = 18;
-    public const int PointerEnter = 19;
-    public const int PointerEnterHandler = 20;
-    public const int Position = 21;
-    public const int Rotation = 22;
-    public const int Scale = 23;
-    public const int StartTile = 24;
-    public const int Target = 25;
-    public const int Text = 26;
-    public const int TextColor = 27;
-    public const int TextMeshProText = 28;
-    public const int Tile = 29;
-    public const int TileLink = 30;
-    public const int Touchable = 31;
-    public const int Touch = 32;
-    public const int Touched = 33;
-    public const int Tween = 34;
-    public const int TweenMove = 35;
-    public const int TweenPlaying = 36;
-    public const int UnityAnimator = 37;
-    public const int UnityAnimatorBool = 38;
-    public const int UnityAnimatorFloat = 39;
-    public const int UnityAnimatorInt = 40;
-    public const int UnityAnimatorRequested = 41;
+    public const int Obstacle = 11;
+    public const int PathDestroyed = 12;
+    public const int PathEndTile = 13;
+    public const int PathFinderAgent = 14;
+    public const int PathFinderObstacle = 15;
+    public const int PathFinderPath = 16;
+    public const int PathFinderPathConfirmed = 17;
+    public const int PathTile = 18;
+    public const int Player = 19;
+    public const int PointerEnter = 20;
+    public const int PointerEnterHandler = 21;
+    public const int Position = 22;
+    public const int Rotation = 23;
+    public const int Scale = 24;
+    public const int StartTile = 25;
+    public const int Target = 26;
+    public const int Text = 27;
+    public const int TextColor = 28;
+    public const int TextMeshProText = 29;
+    public const int Tile = 30;
+    public const int TileLink = 31;
+    public const int Touchable = 32;
+    public const int Touch = 33;
+    public const int Touched = 34;
+    public const int Tween = 35;
+    public const int TweenMove = 36;
+    public const int TweenPlaying = 37;
+    public const int UnityAnimator = 38;
+    public const int UnityAnimatorBool = 39;
+    public const int UnityAnimatorFloat = 40;
+    public const int UnityAnimatorInt = 41;
+    public const int UnityAnimatorRequested = 42;
 
-    public const int TotalComponents = 42;
+    public const int TotalComponents = 43;
 
     public static readonly string[] componentNames = {
         "Destroyed",
@@ -65,6 +66,7 @@ public static class GameComponentsLookup {
         "ImageSprite",
         "MainCamera",
         "MainCanvas",
+        "Obstacle",
         "PathDestroyed",
         "PathEndTile",
         "PathFinderAgent",
@@ -110,6 +112,7 @@ public static class GameComponentsLookup {
         typeof(ImageSprite),
         typeof(MainCamera),
         typeof(MainCanvas),
+        typeof(Obstacle),
         typeof(PathDestroyed),
         typeof(PathEndTile),
         typeof(PathFinderAgent),

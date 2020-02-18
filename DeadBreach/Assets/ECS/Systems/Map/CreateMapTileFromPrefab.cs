@@ -33,6 +33,5 @@ namespace DeadBreach.ECS.Systems.Map
                     tile.ReplaceImage(image);
             }
         }
-
     }
 }

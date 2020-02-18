@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DeadBreach.ECS.Systems.Map
 {
-    public class SetMapTileAsStartTile : IExecuteSystem
+    public class SetMapTileAsStartTile : IInitializeSystem
     {
         private readonly Vector2Int startPosition = new Vector2Int(4,0); 
 
@@ -17,8 +17,7 @@ namespace DeadBreach.ECS.Systems.Map
                     GameMatcher.GridPosition)
                 .NoneOf(GameMatcher.StartTile));
         }
-
-        public void Execute()
+        public void Initialize()
         {
             foreach (var tile in tiles.GetEntities())
                 if (tile.gridPosition.value == startPosition)

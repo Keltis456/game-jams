@@ -2,7 +2,7 @@
 
 namespace DeadBreach.ECS.Systems.Map
 {
-    public class SpawnPlayerOnTheStartTile : IExecuteSystem
+    public class SpawnPlayerOnTheStartTile : IInitializeSystem
     {
         private readonly GameContext game;
         private readonly IGroup<GameEntity> players;
@@ -11,24 +11,20 @@ namespace DeadBreach.ECS.Systems.Map
         public SpawnPlayerOnTheStartTile(GameContext game)
         {
             this.game = game;
-            players = game.GetGroup(GameMatcher
-                .AllOf(GameMatcher.Player));
             startTiles = game.GetGroup(GameMatcher
-                .AllOf(GameMatcher.StartTile, GameMatcher.GridPosition));
+                .AllOf(
+                    GameMatcher.StartTile, 
+                    GameMatcher.GridPosition));
         }
-
-        public void Execute()
+        public void Initialize()
         {
             foreach (var startTile in startTiles)
             {
-                if (players.count <= 0)
-                {
-                    var player = game.CreateEntity();
-                    player.isPlayer = true;
-                    player.isPathFinderAgent = true;
-                    player.isPathFinderObstacle = true;
-                    player.AddGridPosition(startTile.gridPosition.value);
-                }
+                var player = game.CreateEntity();
+                player.isPlayer = true;
+                player.isPathFinderAgent = true;
+                player.isPathFinderObstacle = true;
+                player.AddGridPosition(startTile.gridPosition.value);
             }
         }
     }

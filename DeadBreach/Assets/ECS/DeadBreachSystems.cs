@@ -11,13 +11,14 @@ namespace DeadBreach.ECS
             Canvas canvas, 
             GameObject mapTilePrefab,
             Sprite mapTile, Sprite pathTile, Sprite pathTileEndPrefab, 
-            GameObject playerPrefab)
+            GameObject playerPrefab,
+            GameObject obstaclePrefab)
         {
             Add(new ScreenFeature(game, canvas));
             
             Add(new TouchFeature(game));
 
-            Add(new MapFeature(game, mapTilePrefab,mapTile, pathTile, pathTileEndPrefab, playerPrefab));
+            Add(new MapFeature(game, mapTilePrefab,mapTile, pathTile, pathTileEndPrefab, playerPrefab, obstaclePrefab));
             Add(new PathFindingFeature(game));
             Add(new MovementFeature(game));
 

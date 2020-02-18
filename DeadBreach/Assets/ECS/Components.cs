@@ -31,12 +31,11 @@ public class GameObjectDestroyed : IComponent { }
 public class Destroyed : IComponent { }
 
 public class Player : IComponent { }
+public class Obstacle : IComponent { }
 public class Tile : IComponent { }
 public class PathTile : IComponent { }
 public class PathEndTile : IComponent { }
 public class DestroyedTile : IComponent { }
-public class DestroyedPathTile : IComponent { }
-public class DestroyedEndTile : IComponent { }
 public class PathDestroyed : IComponent { }
 public class Target : IComponent { public Vector2Int value; }
 public class GridPosition : IComponent { public Vector2Int value; }
