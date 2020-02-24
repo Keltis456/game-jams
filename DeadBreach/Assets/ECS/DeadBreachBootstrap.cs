@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace DeadBreach.ECS
 {
@@ -9,7 +10,7 @@ namespace DeadBreach.ECS
         public Sprite MapTile;
         public Sprite PathTile;
         public Sprite PathTileEndPrefab;
-        public GameObject PLayerPrefab;
+        public GameObject PlayerPrefab;
         public GameObject ObstaclePrefab;
 
         private Entitas.Systems systems;
@@ -22,7 +23,7 @@ namespace DeadBreach.ECS
                 MapTile,
                 PathTile,
                 PathTileEndPrefab,
-                PLayerPrefab, 
+                PlayerPrefab, 
                 ObstaclePrefab);
 
 		private void Start() => 
