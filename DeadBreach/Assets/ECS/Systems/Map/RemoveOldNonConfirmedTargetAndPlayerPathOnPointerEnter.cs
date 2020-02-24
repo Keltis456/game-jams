@@ -31,7 +31,7 @@ namespace DeadBreach.ECS.Systems.Map
                 if(player.target.value != tile.gridPosition.value)
                 {
                     player.isPathDestroyed = true;
-                    Debug.Log("Path destroyed");
+                    //Debug.Log("Path destroyed");
                     player.RemoveTarget();
                 }
         }

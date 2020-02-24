@@ -48,6 +48,11 @@ namespace DeadBreach.ECS.Systems.PathFinding
                     agent.AddPathFinderPath(path);
                     break;
                 }
+                else
+                {
+                    agent.RemoveTarget();
+                    continue;
+                }
             }
         }
 

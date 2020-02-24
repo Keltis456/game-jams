@@ -25,7 +25,8 @@ namespace DeadBreach.ECS.Systems.Movement
             tiles = game.GetGroup(GameMatcher
                 .AllOf(
                     GameMatcher.Tile, 
-                    GameMatcher.GridPosition));
+                    GameMatcher.GridPosition,
+                    GameMatcher.PathTile));
         }
 
         public void Execute()
@@ -43,11 +44,17 @@ namespace DeadBreach.ECS.Systems.Movement
 
                 Vector2Int nextNode;
                 var i = path.IndexOf(agent.gridPosition.value);
-                
                 if (i + 1 < path.Count)
                     nextNode = path[i + 1];
                 else
                     continue;
+                
+                foreach (var tile in tiles.GetEntities())
+                    if (tile.gridPosition.value == agent.gridPosition.value)
+                    {
+                        tile.isPathTile = false;
+                        path.Remove(tile.gridPosition.value);
+                    }
 
                 agent.AddTweenMove(
                     new TweenTransform(
@@ -55,10 +62,6 @@ namespace DeadBreach.ECS.Systems.Movement
                         new Vector3(agent.rotation.value.x, agent.gridPosition.value.RotationToTile(nextNode), agent.rotation.value.z), 
                         agent.scale.value));
                 agent.ReplaceGridPosition(nextNode);
-                
-                foreach (var tile in tiles)
-                    if (tile.gridPosition.value == agent.gridPosition.value)
-                        tile.isDestroyedTile = true;
             }
         }
     }
