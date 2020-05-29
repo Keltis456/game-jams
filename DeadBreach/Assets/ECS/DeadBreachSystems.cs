@@ -22,6 +22,8 @@ namespace DeadBreach.ECS
             Add(new PathFindingFeature(game));
             Add(new MovementFeature(game));
 
+            Add(new SkillFeature(game));
+
 
             Add(new RenderFeature(game));
             Add(new DoTweenFeature(game));

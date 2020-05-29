@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using DeadBreach.ECS;
+using DeadBreach.ECS.Skills;
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
 using Entitas.VisualDebugging.Unity;
@@ -10,7 +11,6 @@ using UnityEngine.UI;
 // ReSharper disable CheckNamespace
 
 public class Id : IComponent { [PrimaryEntityIndex] public int value; }
-public class TileLink : IComponent { public int id; }
 
 [Unique] public class MainCamera : IComponent { public Camera value; }
 [Unique] public class MainCanvas : IComponent { public Canvas value; }
@@ -46,6 +46,19 @@ public class PathFinderObstacle : IComponent { }
 public class PathFinderPath : IComponent { public List<Vector2Int> value; }
 public class PathFinderPathConfirmed : IComponent { }
 
+
+public class Skill : IComponent { }
+public class SkillName : IComponent { public string value; }
+public class SkillOwnerId : IComponent { public int value; }
+public class SkillSlotIndex : IComponent { public int value; }
+//public class SkillIsActive : IComponent { public bool value; }
+public class SkillCooldown : IComponent { public int value; }
+public class SkillCooldownCurrent : IComponent { public int value; }
+public class SkillEffectDamage : IComponent { public int value; }
+public class SkillEffectHeal : IComponent { public int value; }
+public class SkillEffectPush : IComponent { public int value; }
+
+public class RequireSkillOnSlot : IComponent { public ISkill value; public int index;}
 
 public class ImageComponent : IComponent{ public Image value; }
 public class ImageColor : IComponent{ public Color value; }

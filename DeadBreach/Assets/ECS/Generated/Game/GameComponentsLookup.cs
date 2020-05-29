@@ -31,28 +31,37 @@ public static class GameComponentsLookup {
     public const int PointerEnter = 20;
     public const int PointerEnterHandler = 21;
     public const int Position = 22;
-    public const int Rotation = 23;
-    public const int Scale = 24;
-    public const int StartTile = 25;
-    public const int Target = 26;
-    public const int Text = 27;
-    public const int TextColor = 28;
-    public const int TextMeshProText = 29;
-    public const int Tile = 30;
-    public const int TileLink = 31;
-    public const int Touchable = 32;
-    public const int Touch = 33;
-    public const int Touched = 34;
-    public const int Tween = 35;
-    public const int TweenMove = 36;
-    public const int TweenPlaying = 37;
-    public const int UnityAnimator = 38;
-    public const int UnityAnimatorBool = 39;
-    public const int UnityAnimatorFloat = 40;
-    public const int UnityAnimatorInt = 41;
-    public const int UnityAnimatorRequested = 42;
+    public const int RequireSkillOnSlot = 23;
+    public const int Rotation = 24;
+    public const int Scale = 25;
+    public const int Skill = 26;
+    public const int SkillCooldown = 27;
+    public const int SkillCooldownCurrent = 28;
+    public const int SkillEffectDamage = 29;
+    public const int SkillEffectHeal = 30;
+    public const int SkillEffectPush = 31;
+    public const int SkillName = 32;
+    public const int SkillOwnerId = 33;
+    public const int SkillSlotIndex = 34;
+    public const int StartTile = 35;
+    public const int Target = 36;
+    public const int Text = 37;
+    public const int TextColor = 38;
+    public const int TextMeshProText = 39;
+    public const int Tile = 40;
+    public const int Touchable = 41;
+    public const int Touch = 42;
+    public const int Touched = 43;
+    public const int Tween = 44;
+    public const int TweenMove = 45;
+    public const int TweenPlaying = 46;
+    public const int UnityAnimator = 47;
+    public const int UnityAnimatorBool = 48;
+    public const int UnityAnimatorFloat = 49;
+    public const int UnityAnimatorInt = 50;
+    public const int UnityAnimatorRequested = 51;
 
-    public const int TotalComponents = 43;
+    public const int TotalComponents = 52;
 
     public static readonly string[] componentNames = {
         "Destroyed",
@@ -78,15 +87,24 @@ public static class GameComponentsLookup {
         "PointerEnter",
         "PointerEnterHandler",
         "Position",
+        "RequireSkillOnSlot",
         "Rotation",
         "Scale",
+        "Skill",
+        "SkillCooldown",
+        "SkillCooldownCurrent",
+        "SkillEffectDamage",
+        "SkillEffectHeal",
+        "SkillEffectPush",
+        "SkillName",
+        "SkillOwnerId",
+        "SkillSlotIndex",
         "StartTile",
         "Target",
         "Text",
         "TextColor",
         "TextMeshProText",
         "Tile",
-        "TileLink",
         "Touchable",
         "Touch",
         "Touched",
@@ -124,15 +142,24 @@ public static class GameComponentsLookup {
         typeof(PointerEnter),
         typeof(PointerEnterHandler),
         typeof(Position),
+        typeof(RequireSkillOnSlot),
         typeof(Rotation),
         typeof(Scale),
+        typeof(Skill),
+        typeof(SkillCooldown),
+        typeof(SkillCooldownCurrent),
+        typeof(SkillEffectDamage),
+        typeof(SkillEffectHeal),
+        typeof(SkillEffectPush),
+        typeof(SkillName),
+        typeof(SkillOwnerId),
+        typeof(SkillSlotIndex),
         typeof(StartTile),
         typeof(Target),
         typeof(Text),
         typeof(TextColor),
         typeof(TextMeshProText),
         typeof(Tile),
-        typeof(TileLink),
         typeof(Touchable),
         typeof(TouchComponent),
         typeof(Touched),

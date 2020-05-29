@@ -25,7 +25,7 @@ namespace DeadBreach.ECS.Systems.DoTween
                     TweenMove(
                         entity.gameObject.value.transform,
                         transformTo,
-                        0.5f));
+                        0.3f));
 
                 entity.ReplacePosition(transformTo.Position);
                 entity.ReplaceRotation(transformTo.Rotation);

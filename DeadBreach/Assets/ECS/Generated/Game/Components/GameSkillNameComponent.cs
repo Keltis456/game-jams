@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public TileLink tileLink { get { return (TileLink)GetComponent(GameComponentsLookup.TileLink); } }
-    public bool hasTileLink { get { return HasComponent(GameComponentsLookup.TileLink); } }
+    public SkillName skillName { get { return (SkillName)GetComponent(GameComponentsLookup.SkillName); } }
+    public bool hasSkillName { get { return HasComponent(GameComponentsLookup.SkillName); } }
 
-    public void AddTileLink(int newId) {
-        var index = GameComponentsLookup.TileLink;
-        var component = (TileLink)CreateComponent(index, typeof(TileLink));
-        component.id = newId;
+    public void AddSkillName(string newValue) {
+        var index = GameComponentsLookup.SkillName;
+        var component = (SkillName)CreateComponent(index, typeof(SkillName));
+        component.value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceTileLink(int newId) {
-        var index = GameComponentsLookup.TileLink;
-        var component = (TileLink)CreateComponent(index, typeof(TileLink));
-        component.id = newId;
+    public void ReplaceSkillName(string newValue) {
+        var index = GameComponentsLookup.SkillName;
+        var component = (SkillName)CreateComponent(index, typeof(SkillName));
+        component.value = newValue;
         ReplaceComponent(index, component);
     }
 
-    public void RemoveTileLink() {
-        RemoveComponent(GameComponentsLookup.TileLink);
+    public void RemoveSkillName() {
+        RemoveComponent(GameComponentsLookup.SkillName);
     }
 }
 
@@ -40,17 +40,17 @@ public partial class GameEntity {
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherTileLink;
+    static Entitas.IMatcher<GameEntity> _matcherSkillName;
 
-    public static Entitas.IMatcher<GameEntity> TileLink {
+    public static Entitas.IMatcher<GameEntity> SkillName {
         get {
-            if (_matcherTileLink == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.TileLink);
+            if (_matcherSkillName == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.SkillName);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherTileLink = matcher;
+                _matcherSkillName = matcher;
             }
 
-            return _matcherTileLink;
+            return _matcherSkillName;
         }
     }
 }

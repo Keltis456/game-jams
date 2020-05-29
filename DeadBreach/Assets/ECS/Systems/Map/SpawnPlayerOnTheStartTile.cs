@@ -1,4 +1,5 @@
-﻿using Entitas;
+﻿using DeadBreach.ECS.Skills;
+using Entitas;
 
 namespace DeadBreach.ECS.Systems.Map
 {
@@ -25,6 +26,8 @@ namespace DeadBreach.ECS.Systems.Map
                 player.isPathFinderAgent = true;
                 player.isPathFinderObstacle = true;
                 player.AddGridPosition(startTile.gridPosition.value);
+                
+                player.AddRequireSkillOnSlot(new SkillSword(), 0);
             }
         }
     }
